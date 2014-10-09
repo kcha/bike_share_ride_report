@@ -1,0 +1,6 @@
+data
+
+*.png
+.RData
+.Rhistory
+.DS_Store
