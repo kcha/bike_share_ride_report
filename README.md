@@ -28,5 +28,6 @@ login credentials) (not available yet)
 The format of the data should be exactly as it appears when viewing your trip data.
 
 ## Disclaimer
-This is a personal project to learn some new R packages (e.g. `ggmap`). It is
-entirely my own and not affiliated with Bike Share Toronto.
+This is a personal project to practice data analysis tools and to learn some new
+R packages (e.g. `ggmap`). This project is entirely my own and not affiliated
+with Bike Share Toronto.
