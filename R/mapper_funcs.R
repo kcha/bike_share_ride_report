@@ -19,5 +19,5 @@ duration_to_minutes <- function(dur) {
   t <- do.call("rbind", t)
   t <- as.matrix(t)
   minutes <- 60*t[,1] + t[,2] + t[,3]/60
-  return(minutes)
+  return(round(minutes, digits=2))
 }
