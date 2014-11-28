@@ -7,7 +7,7 @@ This program takes your personal ride data and creates a map of your dock usage.
 The maps are created in R using the
 [ggmap](http://cran.r-project.org/web/packages/ggmap/index.html) package.
 
-A report of usage statistics are also generated using R Markdown.
+A report of usage statistics are also generated using R Markdown (in development).
 
 ## Requirements
  * R plus the following packages:

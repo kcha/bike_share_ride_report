@@ -6,6 +6,9 @@ cleanse_station_names <- function(stations) {
                               "Harbour Square Park")  
   stations <- str_replace_all(stations, "Princess Ave and Adelaide St( E)*", 
                               "Princess Ave and Adelaide St E")
+  
+  # Add city
+  stations <- paste0(stations, ", Toronto, ON")
   return(stations)
 }
 

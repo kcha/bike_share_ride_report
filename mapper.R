@@ -17,22 +17,27 @@ data$End.Station <- cleanse_station_names(data$End.Station)
 # Organize data ####
 stations <- data.frame(stations = c(as.character(data$Start.Station), 
                                     as.character(data$End.Station)))
-stations$stations <- paste0(stations$stations, ", Toronto, ON")
 geo <- apply(unique(stations), 1, geocode)
 geo <- data.frame(stations = unique(stations$stations), do.call("rbind", geo))
 geo$stations <- as.character(geo$stations)
-stations <- join(stations, geo)
-# stations.loc <- data.frame(stations, do.call("rbind", geo))
+starts <- join(data.frame(stations=data$Start.Station), geo)
+ends <- join(data.frame(stations=data$End.Station), geo)
 
-freq <- ddply(stations, .(stations, lon, lat), summarize, N = length(stations))
+
+freq <- rbind(data.frame(ddply(starts, .(stations, lon, lat), summarize, N = length(stations)),
+                         type = "Start"),
+              data.frame(ddply(ends, .(stations, lon, lat), summarize, N = length(stations)),
+                         type = "End"))
   
 # Load map ####
 city <- get_map("toronto", zoom=14, maptype = "roadmap")
 
 # Plot map ####
-ggmap(city, extent = 'device') + 
-  geom_point(aes(x = lon, y = lat, colour = N, size = N), data = freq) +
+gp1 <- ggmap(city, extent = 'device') + 
+  geom_point(aes(x = lon, y = lat, colour = N, size = N), data = freq) + 
   scale_size_continuous("", range = c(4,12)) +
   scale_colour_gradient("Number of Visits") + 
-  ggtitle(input_file)
-  guides(size = FALSE)
+  facet_wrap(~ type, ncol = 2) + 
+  ggtitle(input_file) 
+
+print(gp1)
