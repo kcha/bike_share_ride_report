@@ -2,34 +2,14 @@
 
 library(ggmap)
 library(plyr)
-library(stringr)
-library(rjson)
-library(assertthat)
 source("R/mapper_funcs.R")
+
+# Load bike share stations ####
+stations <- get_bike_share_data()
 
 # Load data ####
 input_file <- "data/ride_data.txt"
-data <- read.table(input_file, header = TRUE, sep = "\t", stringsAsFactors=FALSE)
-data$Duration <- duration_to_minutes(data$Duration)
-data$Start.Station <- cleanse_station_names(data$Start.Station)
-data$End.Station <- cleanse_station_names(data$End.Station)
-
-# Load bike share stations
-url <- "http://www.bikesharetoronto.com/stations/json"
-stations <- fromJSON(file=url, method='C')
-stations <- data.frame(do.call("rbind", stations$stationBeanList), 
-                       stringsAsFactors=FALSE)
-for (j in 1:ncol(stations)) {
-  if (is.list(stations[,j])) {
-    z <- unlist(stations[,j])
-    if (is.null(z)) {
-      stations[,j] <- rep("NULL", nrow(stations))
-    } else {
-      stations[,j] <- z
-    }
-  }
-} 
-stations$stationName <- cleanse_station_names(stations$stationName)
+data <- get_ride_data(input_file)
 
 # Get longitude and latitude coordinates
 starts <- join(data.frame(stationName=data$Start.Station, stringsAsFactors=FALSE), 
@@ -53,7 +33,7 @@ city <- get_map("toronto", zoom=14, maptype = "roadmap")
 gp1 <- ggmap(city, extent = 'device') + 
   geom_point(aes(x = longitude, y = latitude, colour = N, size = N), data = freq) + 
   scale_size_continuous("", range = c(4,12)) +
-  scale_colour_gradient("Number of Visits") + 
+  scale_colour_gradient("Number of Visits", low="orange", high="red") + 
   facet_wrap(~ type, ncol = 2) + 
   ggtitle(input_file) 
 
