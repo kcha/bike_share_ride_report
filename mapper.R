@@ -4,20 +4,13 @@ library(grid)
 library(ggmap)
 library(plyr)
 library(stringr)
-
-duration_to_minutes <- function(dur) {
-  # Convert 0:00:00 time format to minutes
-  t <- str_split(dur, ":")
-  t <- lapply(t, as.numeric)
-  t <- do.call("rbind", t)
-  t <- as.matrix(t)
-  minutes <- 60*t[,1] + t[,2] + t[,3]/60
-  return(minutes)
-}
+source("R/mapper_funcs.R")
 
 # Load data
 input_file <- "data/ride_data.txt"
 data <- read.table(input_file, header = TRUE, sep = "\t")
+data$Start.Station <- cleanse_station_names(data$Start.Station)
+data$End.Station <- cleanse_station_names(data$End.Station)
 
 # Plot frequency of stations on map ####
 
