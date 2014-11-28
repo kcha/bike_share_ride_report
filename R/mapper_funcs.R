@@ -1,15 +1,22 @@
 cleanse_station_names <- function(stations) {
-  # Correct station names that have been known to give inaccurate locations when
-  # searching for their geographical locations
-  stations <- str_replace_all(stations, " / ", " and ")
-  stations <- str_replace_all(stations, "Ferry Ramp and Queens Quay", 
-                              "Harbour Square Park")  
-  stations <- str_replace_all(stations, "Princess Ave and Adelaide St( E)*", 
-                              "Princess Ave and Adelaide St E")
-  
-  # Add city
-  stations <- paste0(stations, ", Toronto, ON")
+  # Correct station names that have been moved
+  stations <- trim(stations)
+  stations <- remove_periods(stations)
+  stations <- str_replace_all(stations, "Wellesley St W / Queens Park Cres W",
+                              "Queens Park Cres E")
+  stations <- str_replace_all(stations, "Dundas / Yonge St",
+                              "Dundas St / Yonge St")
   return(stations)
+}
+
+remove_periods <- function(x) {
+  # Remove periods at the end of street names
+  gsub("St\\.", "St", x)
+}
+
+trim <- function(x) {
+  # Remove leading and trailing whitespace
+  gsub("^\\s+|\\s+$", "", x)
 }
 
 duration_to_minutes <- function(dur) {
