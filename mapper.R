@@ -16,14 +16,12 @@ duration_to_minutes <- function(dur) {
 }
 
 # Load data
-data <- read.table("data/ride_data.txt", header = TRUE, sep = "\t")
+input_file <- "data/ride_data.txt"
+data <- read.table(input_file, header = TRUE, sep = "\t")
 
-# data <- head(data)
+# Plot frequency of stations on map ####
 
-################################################################################
-# Plot frequency of stations on map
-
-# Organize data
+# Organize data ####
 stations <- data.frame(stations = c(as.character(data$Start.Station), 
                                     as.character(data$End.Station)))
 stations$stations <- paste0(stations$stations, ", Toronto, ON")
@@ -35,14 +33,13 @@ stations <- join(stations, geo)
 
 freq <- ddply(stations, .(stations, lon, lat), summarize, N = length(stations))
   
-# Load map
+# Load map ####
 city <- get_map("toronto", zoom=14, maptype = "roadmap")
 
-# Plot
+# Plot map ####
 ggmap(city, extent = 'device') + 
   geom_point(aes(x = lon, y = lat, colour = N, size = N), data = freq) +
-  scale_size_continuous("Number of Stations", range = c(4,12)) +
+  scale_size_continuous("", range = c(4,12)) +
   scale_colour_gradient("Number of Visits") + 
+  ggtitle(input_file)
   guides(size = FALSE)
-  
-
