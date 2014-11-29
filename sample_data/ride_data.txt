@@ -1,0 +1,301 @@
+Trip	Start.Station	Start.Date	End.Station	End.Date	Duration
+1	Richmond St E / Jarvis St	09/04/2013 07:20 am	College St / Huron St	09/04/2013 07:36 am	00:16:25
+2	Bloor St / Brunswick Ave	05/15/2013 07:21 am	King St E / Jarvis St	05/15/2013 07:27 am	00:06:14
+3	St George St / Bloor St W	10/22/2013 07:46 am	University Ave / King St W	10/22/2013 07:57 am	00:10:54
+4	Queen St / Ossington Ave	03/21/2014 07:50 am	Huron St / Harbord St	03/21/2014 08:05 am	00:15:16
+5	Wellington St / Portland St	05/13/2014 07:55 am	Augusta Ave / Dundas St W	05/13/2014 08:12 am	00:16:29
+6	Metro Hall Plaza	08/20/2014 07:56 am	Beverly  St / Dundas St W	08/20/2014 08:08 am	00:11:12
+7	Sherbourne St / Wellesley St	09/29/2013 08:20 am	Queens Park Cres E	09/29/2013 08:49 am	00:28:25
+8	Sherbourne / Carlton (Allan Gardens)	11/22/2014 07:21 am	College St / Huron St	11/22/2014 07:34 am	00:12:42
+9	University Ave / Gerrard St W	01/15/2013 07:29 am	St George St / Bloor St W	01/15/2013 07:44 am	00:15:19
+10	Niagara St / Richmond St W.	03/21/2014 08:33 am	King St W / Spadina Ave	03/21/2014 08:51 am	00:18:14
+11	Simcoe St / Wellington St W	12/03/2013 07:34 am	St George St / Bloor St W	12/03/2013 07:49 am	00:14:52
+12	Sherbourne St / Wellesley St	09/15/2013 08:38 am	College St / Borden St	09/15/2013 08:50 am	00:11:46
+13	Beverly  St / Dundas St W	10/02/2014 08:40 am	Bay St / Bloor St W	10/02/2014 09:00 am	00:20:13
+14	Bloor St / Brunswick Ave	02/25/2013 07:44 am	Gerrard St E / Church St	02/25/2013 08:07 am	00:23:04
+15	Front/Yonge (Hockey Hall of Fame)	10/03/2014 08:45 am	Sherbourne / Carlton (Allan Gardens)	10/03/2014 09:00 am	00:14:51
+16	Ted Rogers Way	05/18/2013 08:49 am	College St / Huron St	05/18/2013 09:07 am	00:17:48
+17	Bloor St / Brunswick Ave	06/06/2013 08:51 am	College St / Huron St	06/06/2013 09:06 am	00:14:30
+18	Granby St / Yonge St	09/23/2014 08:54 am	Queens Quay W / Dan Leckie Way	09/23/2014 09:14 am	00:20:04
+19	Euclid Ave / Bloor St	02/15/2013 07:54 am	University Ave / King St W	02/15/2013 08:03 am	00:09:13
+20	Yonge St / Lakeshore Ave. E.	06/20/2013 08:55 am	Phoebe St / Spadina Ave	06/20/2013 09:21 am	00:26:36
+21	Bloor St / Brunswick Ave	12/21/2014 07:57 am	Bay St / College St	12/21/2014 08:09 am	00:11:58
+22	Sherbourne St / Wellesley St	05/07/2014 08:59 am	College St / Huron St	05/07/2014 09:07 am	00:07:42
+23	Willcocks St / St George St	11/13/2013 08:00 am	Simcoe St / Wellington St W	11/13/2013 08:13 am	00:13:14
+24	Richmond St E / Jarvis St	10/01/2013 09:06 am	Ft. York / Capreol Crt.	10/01/2013 09:21 am	00:15:44
+25	King St E / Jarvis St	12/01/2013 08:07 am	College St / Huron St	12/01/2013 08:30 am	00:23:07
+26	Madison Ave / Bloor St W	08/05/2014 09:10 am	Trinity / Front (Distillery)	08/05/2014 09:29 am	00:19:33
+27	Sherbourne St / Wellesley St	04/26/2014 09:13 am	St George St / Bloor St W	04/26/2014 09:29 am	00:15:42
+28	Princess Ave / Adelaide St	12/05/2013 08:15 am	College St / Huron St	12/05/2013 08:23 am	00:08:03
+29	Bloor St / Brunswick Ave	02/09/2013 08:16 am	Gerrard St E / Church St	02/09/2013 08:27 am	00:10:40
+30	Niagara St / Richmond St W.	06/22/2013 09:18 am	Navy Wharf Ct. / Bremner Blvd.	06/22/2013 09:32 am	00:14:11
+31	Bloor St / Brunswick Ave	06/19/2013 09:21 am	Bay St / Bloor St W	06/19/2013 09:48 am	00:27:45
+32	Simcoe St / Queen St W	06/17/2013 09:21 am	Bay St / Bloor St W	06/17/2013 09:26 am	00:05:41
+33	Bremner Blvd / Rees St	02/15/2013 08:21 am	Bay St / Bloor St W	02/15/2013 08:42 am	00:20:39
+34	Temperance St / Yonge St	12/27/2013 08:23 am	College St / Huron St	12/27/2013 08:35 am	00:12:21
+35	Sherbourne St / Wellesley St	06/27/2013 09:23 am	Bay St / Bloor St W	06/27/2013 09:47 am	00:23:19
+36	University Ave / Gerrard St W	07/04/2014 09:25 am	St George St / Bloor St W	07/04/2014 09:34 am	00:09:18
+37	Sherbourne St / Wellesley St	02/01/2014 08:25 am	Church St / Bloor St E	02/01/2014 08:41 am	00:15:43
+38	Bloor St / Brunswick Ave	11/18/2014 08:26 am	Bathurst St / Dundas St	11/18/2014 08:36 am	00:09:30
+39	Bloor St / Brunswick Ave	03/05/2013 08:26 am	Lower Simcoe St / Lakeshore Blvd W	03/05/2013 08:46 am	00:19:31
+40	Bloor St / Brunswick Ave	11/18/2014 08:27 am	Bay St / Bloor St W	11/18/2014 08:50 am	00:22:25
+41	Ted Rogers Way	06/08/2014 09:29 am	Simcoe St / Wellington St W	06/08/2014 09:54 am	00:24:45
+42	Bloor St / Brunswick Ave	10/31/2014 09:30 am	College St / Huron St	10/31/2014 09:49 am	00:18:59
+43	Bloor St / Brunswick Ave	03/22/2014 09:32 am	Wellington St / Portland St	03/22/2014 09:57 am	00:24:12
+44	Wellington St / Portland St	04/28/2013 09:33 am	Bay St / Bloor St W	04/28/2013 09:55 am	00:21:13
+45	Queen St / Portland St	05/14/2013 09:35 am	York St / Queens Quay W	05/14/2013 09:49 am	00:14:20
+46	Beverly  St / Dundas St W	06/14/2014 09:36 am	St George St / Bloor St W	06/14/2014 09:53 am	00:17:23
+47	Sherbourne St / Wellesley St	03/04/2014 08:37 am	Beverly  St / Dundas St W	03/04/2014 08:47 am	00:10:08
+48	Sherbourne St / Wellesley St	08/16/2013 09:38 am	Church St / Monteith St (Barbara Hall Park)	08/16/2013 09:52 am	00:14:04
+49	Gould St / Mutual St	07/15/2014 09:39 am	College St / Huron St	07/15/2014 10:00 am	00:21:06
+50	Bay St / Bloor St W	09/02/2013 09:39 am	College St / Borden St	09/02/2013 09:56 am	00:17:42
+51	Bloor St / Brunswick Ave	09/13/2014 09:40 am	Bay St / Bloor St W	09/13/2014 09:57 am	00:17:17
+52	Simcoe St / Queen St W	02/26/2014 08:42 am	Bay St / Bloor St W	02/26/2014 08:52 am	00:09:48
+53	Elizabeth St / Edward St	10/29/2013 09:43 am	Bay St / Bloor St W	10/29/2013 09:55 am	00:11:58
+54	Trinity / Front (Distillery)	11/07/2014 08:43 am	College St / Huron St	11/07/2014 08:54 am	00:11:10
+55	Queen St / Portland St	12/02/2013 08:45 am	Granby St / Yonge St	12/02/2013 09:02 am	00:16:58
+56	Sherbourne St / Wellesley St	03/14/2013 09:46 am	Queens Quay W / Dan Leckie Way	03/14/2013 09:56 am	00:10:02
+57	Ted Rogers Way	12/04/2013 08:47 am	Dockside Dr / Queens Quay E.	12/04/2013 09:04 am	00:17:48
+58	Granby St / Yonge St	12/14/2014 08:48 am	College St / Huron St	12/14/2014 08:57 am	00:09:25
+59	Dundas St / Yonge St	11/02/2014 08:48 am	Spadina Ave / Sussex Ave	11/02/2014 09:12 am	00:24:08
+60	Euclid Ave / Bloor St	11/13/2013 08:48 am	Bay St / Bloor St W	11/13/2013 09:06 am	00:17:18
+61	Metro Hall Plaza	09/23/2014 09:52 am	Willcocks St / St George St	09/23/2014 10:03 am	00:11:29
+62	Sherbourne St / Wellesley St	08/07/2013 09:52 am	Gerrard St E / Church St	08/07/2013 10:08 am	00:16:12
+63	Church St / Alexander St	08/02/2014 09:53 am	Beverly  St / Dundas St W	08/02/2014 10:06 am	00:13:14
+64	Queen St / Portland St	08/04/2014 09:53 am	King St E / Jarvis St	08/04/2014 10:10 am	00:16:51
+65	Bloor St / Brunswick Ave	10/08/2013 09:54 am	College St / Huron St	10/08/2013 10:10 am	00:16:13
+66	Sherbourne St / Wellesley St	10/05/2013 09:54 am	York St / Queens Quay W	10/05/2013 10:04 am	00:09:55
+67	Bloor St / Brunswick Ave	04/14/2014 09:54 am	Bay St / Bloor St W	04/14/2014 10:05 am	00:11:02
+68	Jarvis St / Carleton St	09/17/2014 09:55 am	Front St W / Blue Jays Way	09/17/2014 10:11 am	00:16:29
+69	Bloor St / Brunswick Ave	04/22/2014 09:55 am	Church St / Bloor St E	04/22/2014 10:18 am	00:23:11
+70	Scott St / The Esplanade	01/10/2014 08:58 am	St George St / Bloor St W	01/10/2014 09:18 am	00:20:25
+71	Phoebe St / Spadina Ave	04/19/2013 10:00 am	Bremner Blvd / Rees St	04/19/2013 10:12 am	00:11:52
+72	Princess Ave / Adelaide St	03/21/2014 10:01 am	College St / Huron St	03/21/2014 10:20 am	00:19:07
+73	Bloor St / Brunswick Ave	02/01/2013 09:01 am	Phoebe St / Spadina Ave	02/01/2013 09:15 am	00:14:45
+74	Parliament St / Gerrard St	12/28/2013 09:03 am	Bay St / Bloor St W	12/28/2013 09:20 am	00:16:30
+75	Sherbourne St / Wellesley St	06/21/2014 10:07 am	Dundas St / Yonge St	06/21/2014 10:23 am	00:16:18
+76	Elizabeth St / Edward St	07/01/2014 10:07 am	Yonge St / Lakeshore Ave. E.	07/01/2014 10:35 am	00:27:52
+77	Sherbourne St / Wellesley St	02/16/2013 09:07 am	College St / Huron St	02/16/2013 09:16 am	00:09:04
+78	Spadina Ave / Sussex Ave	11/18/2013 09:08 am	Simcoe St / Queen St W	11/18/2013 09:23 am	00:15:30
+79	Spadina Ave / Sussex Ave	12/30/2013 09:09 am	Bremner Blvd / Rees St	12/30/2013 09:15 am	00:06:06
+80	Elizabeth St / Edward St	07/16/2013 10:09 am	Bay St / Bloor St W	07/16/2013 10:27 am	00:17:56
+81	Bloor St / Brunswick Ave	03/11/2014 10:09 am	Bay St / Bloor St W	03/11/2014 10:30 am	00:20:28
+82	Bloor St / Brunswick Ave	06/18/2014 10:09 am	St George St / Bloor St W	06/18/2014 10:32 am	00:22:13
+83	Front/Yonge (Hockey Hall of Fame)	06/02/2014 10:10 am	Richmond St E / Jarvis St	06/02/2014 10:16 am	00:05:22
+84	Bloor St / Brunswick Ave	03/27/2013 10:12 am	Princess Ave / Adelaide St	03/27/2013 10:29 am	00:17:03
+85	Church St / Alexander St	02/22/2014 09:12 am	Granby St / Yonge St	02/22/2014 09:35 am	00:22:58
+86	Wellington St W / Bay St	08/02/2014 10:13 am	Lower Jarvis St / The Esplanade	08/02/2014 10:26 am	00:12:55
+87	Bloor St / Brunswick Ave	06/18/2013 10:13 am	Augusta Ave / Dundas St W	06/18/2013 10:27 am	00:13:56
+88	Sherbourne St / Wellesley St	06/10/2014 10:16 am	Granby St / Yonge St	06/10/2014 10:30 am	00:14:49
+89	Madison Ave / Bloor St W	08/31/2014 10:17 am	Bathurst St / Dundas St	08/31/2014 10:34 am	00:16:49
+90	King St W / Spadina Ave	03/28/2013 10:18 am	College St / Huron St	03/28/2013 10:36 am	00:18:19
+91	King St W / Bay St	11/26/2014 09:18 am	College St / Huron St	11/26/2014 09:40 am	00:21:35
+92	Widmer St / Adelaide St	06/27/2014 10:18 am	Dundas St / Parliament St	06/27/2014 10:33 am	00:14:31
+93	Wellington St / Portland St	08/11/2014 10:20 am	Church St / Monteith St (Barbara Hall Park)	08/11/2014 10:36 am	00:15:58
+94	Queens Park / Bloor St W	05/19/2013 10:21 am	St George St / Bloor St W	05/19/2013 10:49 am	00:27:26
+95	Temperance St / Yonge St	01/20/2013 09:22 am	Queen St / Portland St	01/20/2013 09:39 am	00:17:09
+96	Niagara St / Richmond St W.	09/18/2014 10:22 am	Queen St / Portland St	09/18/2014 10:38 am	00:15:56
+97	Sherbourne St / Wellesley St	10/29/2014 10:24 am	Bay St / Bloor St W	10/29/2014 10:32 am	00:08:17
+98	Sherbourne St / Wellesley St	04/11/2013 10:25 am	College St / Borden St	04/11/2013 10:40 am	00:15:00
+99	Queen St / Portland St	12/13/2013 09:26 am	Jarvis St / Carleton St	12/13/2013 09:40 am	00:13:53
+100	Wellesley St E. / Yonge St	12/02/2013 09:26 am	Bathurst / Queens Quay (Island Airport)	12/02/2013 09:41 am	00:14:56
+101	King St W / Spadina Ave	05/23/2014 10:27 am	Jarvis St / Carleton St	05/23/2014 10:39 am	00:12:07
+102	Queen St / Portland St	02/18/2013 09:27 am	Bay St / Wellesley St W	02/18/2013 09:38 am	00:11:33
+103	Queen St / Portland St	06/16/2014 10:29 am	Lower Jarvis St / The Esplanade	06/16/2014 10:40 am	00:11:23
+104	Bloor St / Brunswick Ave	10/15/2013 10:31 am	Queen St W / Spadina Ave	10/15/2013 10:45 am	00:13:55
+105	University Ave / College St	12/01/2013 09:32 am	University Ave / College St	12/01/2013 09:53 am	00:21:50
+106	Bay St / St Joseph St	06/10/2014 10:33 am	King St W / Spadina Ave	06/10/2014 10:53 am	00:20:14
+107	Dundas St / Parliament St	12/08/2013 09:33 am	Queen St W / Spadina Ave	12/08/2013 09:46 am	00:13:12
+108	Madison Ave / Bloor St W	12/26/2014 09:36 am	College St / Huron St	12/26/2014 09:42 am	00:06:34
+109	Queen St / Portland St	09/06/2014 10:39 am	Richmond St E / Jarvis St	09/06/2014 10:49 am	00:10:46
+110	Church St / Monteith St (Barbara Hall Park)	08/24/2014 10:39 am	Sherbourne St / Wellesley St	08/24/2014 10:52 am	00:12:42
+111	Bathurst St / Dundas St	07/07/2014 10:40 am	Bloor St / Brunswick Ave	07/07/2014 10:55 am	00:15:31
+112	Queen St / Portland St	03/24/2013 10:42 am	College St / Borden St	03/24/2013 10:54 am	00:11:41
+113	Sherbourne St / Wellesley St	08/31/2014 10:42 am	Simcoe St / Queen St W	08/31/2014 11:07 am	00:25:02
+114	Bloor St / Brunswick Ave	08/13/2014 10:42 am	Bay St / Bloor St W	08/13/2014 10:56 am	00:13:38
+115	Queen St / Portland St	12/20/2014 09:44 am	King St W / Bay St	12/20/2014 09:53 am	00:08:55
+116	Sherbourne St / Wellesley St	02/05/2013 09:45 am	St George St / Bloor St W	02/05/2013 09:59 am	00:14:17
+117	Queen St / Portland St	06/26/2014 10:45 am	Bay St / Bloor St W	06/26/2014 10:55 am	00:09:58
+118	Bloor St / Brunswick Ave	11/01/2013 10:46 am	Augusta Ave / Dundas St W	11/01/2013 11:02 am	00:15:46
+119	Queen St / Portland St	02/27/2014 09:50 am	Melinda St / Yonge St	02/27/2014 10:06 am	00:16:10
+120	Wellington St / Portland St	08/26/2014 10:52 am	Euclid Ave / Bloor St	08/26/2014 11:09 am	00:16:46
+121	Bloor St / Brunswick Ave	01/11/2013 09:52 am	Granby St / Yonge St	01/11/2013 09:59 am	00:06:53
+122	Queen St / Portland St	01/10/2013 09:53 am	College St / Huron St	01/10/2013 10:09 am	00:16:06
+123	Queen St / Portland St	12/23/2014 09:53 am	Wellington St W / Bay St	12/23/2014 10:09 am	00:16:33
+124	University Ave / Gerrard St W	07/09/2014 10:54 am	College St / Huron St	07/09/2014 11:02 am	00:07:53
+125	Bathurst St / Dundas St	08/17/2013 10:55 am	College St / Huron St	08/17/2013 11:14 am	00:19:46
+126	Gould St / Mutual St	08/12/2014 10:58 am	Bloor St / Brunswick Ave	08/12/2014 11:16 am	00:18:55
+127	Lower Simcoe St / Lakeshore Blvd W	12/20/2014 10:01 am	Bathurst St / Dundas St	12/20/2014 10:28 am	00:26:29
+128	Queen St / Portland St	05/27/2013 11:02 am	Bay St / Bloor St W	05/27/2013 11:18 am	00:15:47
+129	Queen St / Portland St	04/14/2014 11:05 am	Bay St / St Joseph St	04/14/2014 11:20 am	00:15:14
+130	Scott St / The Esplanade	11/14/2013 10:06 am	College St / Huron St	11/14/2013 10:22 am	00:15:28
+131	Wellington St W / Bay St	11/11/2014 10:06 am	St George St / Bloor St W	11/11/2014 10:22 am	00:15:20
+132	Queen St / Portland St	12/17/2014 10:07 am	Gerrard St E / Church St	12/17/2014 10:13 am	00:05:45
+133	Wellington St W / Bay St	11/28/2013 10:12 am	St George St / Bloor St W	11/28/2013 10:19 am	00:06:38
+134	Elizabeth St / Edward St	06/17/2013 11:14 am	Bay St / Bloor St W	06/17/2013 11:28 am	00:14:36
+135	Richmond St E / Jarvis St	05/20/2014 11:14 am	St George St / Bloor St W	05/20/2014 11:26 am	00:12:05
+136	Ted Rogers Way	02/08/2014 10:16 am	Bremner Blvd / Rees St	02/08/2014 10:31 am	00:15:16
+137	Bloor St / Brunswick Ave	03/01/2014 10:17 am	St George St / Bloor St W	03/01/2014 10:22 am	00:04:26
+138	Queen St / Portland St	11/11/2013 10:19 am	King St E / Jarvis St	11/11/2013 10:27 am	00:07:30
+139	Bond St / Queen St E	11/06/2013 10:22 am	Bay St / Bloor St W	11/06/2013 10:32 am	00:09:29
+140	Wellesley St E. / Yonge St	03/09/2014 11:24 am	Bay St / Bloor St W	03/09/2014 11:44 am	00:19:55
+141	Sherbourne St / Wellesley St	11/25/2013 10:25 am	Queens Park Cres E	11/25/2013 10:35 am	00:09:30
+142	Madison Ave / Bloor St W	11/25/2014 10:30 am	College St / Huron St	11/25/2014 10:41 am	00:11:00
+143	Augusta Ave / Dundas St W	09/04/2014 11:37 am	College St / Huron St	09/04/2014 11:53 am	00:15:23
+144	Queen St / Portland St	06/12/2013 11:38 am	Trinity / Front (Distillery)	06/12/2013 11:51 am	00:13:23
+145	Sherbourne St / Wellesley St	11/01/2013 11:42 am	Euclid Ave / Bloor St	11/01/2013 11:58 am	00:15:43
+146	Scott St / The Esplanade	11/01/2013 11:43 am	Bremner / Spadina	11/01/2013 12:09 pm	00:26:31
+147	Jarvis St / Carleton St	01/17/2013 10:46 am	Princess Ave / Adelaide St	01/17/2013 10:56 am	00:09:22
+148	Bloor St / Brunswick Ave	10/04/2013 11:56 am	Huron St / Harbord St	10/04/2013 12:10 pm	00:13:28
+149	Sherbourne St / Wellesley St	11/03/2013 10:58 am	Church St / Alexander St	11/03/2013 11:10 am	00:12:24
+150	Queens Quay W / Dan Leckie Way	05/20/2013 12:23 pm	College St / Huron St	05/20/2013 12:46 pm	00:22:33
+151	Queens Quay W / Dan Leckie Way	05/27/2014 03:11 pm	Dockside Dr / Queens Quay E.	05/27/2014 03:22 pm	00:11:09
+152	Bloor St / Brunswick Ave	01/11/2013 02:23 pm	Simcoe St / Dundas St W	01/11/2013 02:38 pm	00:14:35
+153	Queen St / Portland St	06/15/2014 03:45 pm	Bremner / Spadina	06/15/2014 04:03 pm	00:18:56
+154	Beverly  St / Dundas St W	11/11/2013 03:02 pm	Bay St / Bloor St W	11/11/2013 03:12 pm	00:09:42
+155	Queen St / Portland St	06/15/2014 04:03 pm	College St / Huron St	06/15/2014 04:26 pm	00:23:16
+156	Queen St / Portland St	01/12/2013 03:03 pm	Bay St / Bloor St W	01/12/2013 03:21 pm	00:18:22
+157	College St / Borden St	02/03/2013 03:03 pm	St George St / Bloor St W	02/03/2013 03:13 pm	00:09:37
+158	Queen St / Portland St	10/31/2013 04:08 pm	Simcoe St / Queen St W	10/31/2013 04:25 pm	00:17:16
+159	Sherbourne St / Wellesley St	04/12/2014 04:29 pm	Bay St / Bloor St W	04/12/2014 04:42 pm	00:13:56
+160	Euclid Ave / Bloor St	06/10/2013 04:29 pm	Bay St / Bloor St W	06/10/2013 04:46 pm	00:16:33
+161	Metro Hall Plaza	08/27/2014 04:32 pm	Huron St / Harbord St	08/27/2014 04:47 pm	00:14:33
+162	Bloor St / Brunswick Ave	05/19/2014 04:32 pm	Jarvis St / Isabella St	05/19/2014 04:52 pm	00:20:21
+163	Bay St / St Joseph St	10/14/2014 04:32 pm	Simcoe St / Wellington St W	10/14/2014 04:41 pm	00:08:14
+164	Jarvis St / Carleton St	10/28/2013 04:35 pm	Queens Park / Bloor St W	10/28/2013 04:47 pm	00:12:23
+165	Sherbourne St / Wellesley St	10/26/2013 04:35 pm	College St / Huron St	10/26/2013 04:49 pm	00:13:45
+166	Wellesley St E. / Yonge St	07/01/2013 04:36 pm	St George St / Bloor St W	07/01/2013 04:46 pm	00:10:01
+167	Dundas St / Yonge St	09/29/2013 04:38 pm	Front/Yonge (Hockey Hall of Fame)	09/29/2013 04:48 pm	00:09:48
+168	Parliament St / Gerrard St	06/18/2013 04:40 pm	Dundas St / Yonge St	06/18/2013 04:55 pm	00:14:54
+169	Church St / Monteith St (Barbara Hall Park)	11/07/2014 03:41 pm	King St E / Jarvis St	11/07/2014 03:55 pm	00:14:20
+170	University Ave / Elm St	12/12/2013 03:46 pm	Queen St W / Spadina Ave	12/12/2013 03:48 pm	00:02:15
+171	Sherbourne St / Wellesley St	02/05/2013 03:46 pm	Lower Jarvis St / The Esplanade	02/05/2013 04:07 pm	00:20:12
+172	Queen St / Portland St	07/15/2014 04:48 pm	Parliament St / Gerrard St	07/15/2014 05:04 pm	00:16:14
+173	Sherbourne / Carlton (Allan Gardens)	08/29/2013 04:48 pm	Princess Ave / Adelaide St	08/29/2013 05:15 pm	00:27:04
+174	Bloor St / Brunswick Ave	02/06/2014 03:48 pm	Bay St / Bloor St W	02/06/2014 04:07 pm	00:18:25
+175	Ted Rogers Way	05/06/2014 04:49 pm	College St / Huron St	05/06/2014 05:01 pm	00:12:45
+176	Sherbourne St / Wellesley St	07/21/2013 04:50 pm	Queens Park Cres E	07/21/2013 05:19 pm	00:28:59
+177	Lower Simcoe St / Lakeshore Blvd W	02/09/2013 03:52 pm	Dundas St / Yonge St	02/09/2013 04:21 pm	00:29:09
+178	Sherbourne St / Wellesley St	11/06/2013 03:54 pm	College St / Huron St	11/06/2013 04:03 pm	00:08:54
+179	Bloor St / Brunswick Ave	03/19/2014 04:56 pm	Bay St / Bloor St W	03/19/2014 05:13 pm	00:17:20
+180	Richmond St E / Jarvis St	12/09/2014 03:57 pm	Ferry Ramp / Queens Quay W	12/09/2014 04:11 pm	00:13:56
+181	Queen St / Portland St	12/04/2014 03:57 pm	Dundas St / Yonge St	12/04/2014 04:13 pm	00:15:56
+182	Spadina Ave / Sussex Ave	03/07/2013 04:00 pm	Ted Rogers Way	03/07/2013 04:16 pm	00:16:08
+183	Temperance St / Yonge St	12/28/2013 04:07 pm	Wellesley St E. / Yonge St	12/28/2013 04:16 pm	00:08:41
+184	Bloor St / Brunswick Ave	10/15/2013 05:08 pm	Richmond St E / Jarvis St	10/15/2013 05:25 pm	00:16:25
+185	Richmond St E / Jarvis St	10/11/2013 05:09 pm	York St / Queens Quay W	10/11/2013 05:32 pm	00:23:44
+186	Willcocks St / St George St	08/20/2013 05:09 pm	Wellington St / Portland St	08/20/2013 05:24 pm	00:14:10
+187	Wellington St / Portland St	05/10/2014 05:09 pm	Bay St / Wellesley St W	05/10/2014 05:24 pm	00:14:11
+188	Sherbourne St / Wellesley St	07/26/2013 05:10 pm	College St / Huron St	07/26/2013 05:32 pm	00:21:59
+189	Sherbourne St / Wellesley St	10/11/2013 05:10 pm	Bathurst St / Dundas St	10/11/2013 05:29 pm	00:19:29
+190	Jarvis St / Carleton St	12/19/2014 04:12 pm	Bay St / Bloor St W	12/19/2014 04:19 pm	00:06:45
+191	Queen St / Portland St	07/29/2014 05:13 pm	Jarvis St / Isabella St	07/29/2014 05:29 pm	00:16:08
+192	Bloor St / Brunswick Ave	08/16/2013 05:13 pm	Bremner Blvd / Rees St	08/16/2013 05:36 pm	00:23:16
+193	Bay St / Wellesley St W	08/16/2014 05:16 pm	College St / Huron St	08/16/2014 05:38 pm	00:22:04
+194	Sherbourne St / Wellesley St	06/10/2013 05:18 pm	King St W / Spadina Ave	06/10/2013 05:35 pm	00:17:05
+195	Sherbourne St / Wellesley St	12/30/2013 04:19 pm	St George St / Bloor St W	12/30/2013 04:37 pm	00:18:36
+196	Wellington St W / Bay St	05/02/2013 05:19 pm	College St / Huron St	05/02/2013 05:28 pm	00:09:00
+197	Bloor St / Brunswick Ave	03/29/2013 05:20 pm	Sherbourne / Carlton (Allan Gardens)	03/29/2013 05:37 pm	00:16:30
+198	Queen St / Portland St	10/13/2014 05:22 pm	St George St / Bloor St W	10/13/2014 05:32 pm	00:10:13
+199	Sherbourne St / Wellesley St	03/10/2013 05:23 pm	Widmer St / Adelaide St	03/10/2013 05:36 pm	00:12:42
+200	Ted Rogers Way	09/19/2014 05:26 pm	St George St / Bloor St W	09/19/2014 05:46 pm	00:19:40
+201	Sherbourne St / Wellesley St	07/21/2013 05:26 pm	College St / Huron St	07/21/2013 05:36 pm	00:09:18
+202	Sherbourne St / Wellesley St	01/21/2013 04:28 pm	Granby St / Yonge St	01/21/2013 04:44 pm	00:16:20
+203	St George St / Bloor St W	07/25/2014 05:28 pm	College St / Huron St	07/25/2014 05:46 pm	00:17:08
+204	Bond St / Queen St E	09/18/2013 05:30 pm	Bay St / Bloor St W	09/18/2013 05:45 pm	00:15:16
+205	Church St / Alexander St	01/20/2013 04:31 pm	Queen St W / Spadina Ave	01/20/2013 04:55 pm	00:24:06
+206	College St / Major St	06/25/2014 05:32 pm	Lower Jarvis St / The Esplanade	06/25/2014 05:42 pm	00:09:53
+207	University Ave / College St	01/23/2013 04:33 pm	Bremner Blvd / Rees St	01/23/2013 04:51 pm	00:18:01
+208	Bloor St / Brunswick Ave	11/11/2013 04:36 pm	St George St / Bloor St W	11/11/2013 04:50 pm	00:14:33
+209	Sherbourne St / Wellesley St	07/06/2013 05:36 pm	Simcoe St / Wellington St W	07/06/2013 05:49 pm	00:13:41
+210	Dundas St / Parliament St	12/28/2013 04:40 pm	Beverly  St / Dundas St W	12/28/2013 04:57 pm	00:17:19
+211	Front/Yonge (Hockey Hall of Fame)	04/19/2014 05:41 pm	Queens Park / Bloor St W	04/19/2014 05:50 pm	00:09:53
+212	Jarvis St / Isabella St	03/03/2013 04:41 pm	College St / Major St	03/03/2013 04:50 pm	00:08:25
+213	Sherbourne St / Wellesley St	05/12/2013 05:42 pm	Front St W / Blue Jays Way	05/12/2013 05:54 pm	00:12:31
+214	Jarvis St / Isabella St	03/18/2013 05:42 pm	Bathurst / Queens Quay (Island Airport)	03/18/2013 06:06 pm	00:23:45
+215	Church St / Alexander St	08/12/2014 05:42 pm	Front/Yonge (Hockey Hall of Fame)	08/12/2014 05:58 pm	00:15:16
+216	Euclid Ave / Bloor St	03/31/2014 05:43 pm	Jarvis St / Carleton St	03/31/2014 06:00 pm	00:16:39
+217	Bloor St / Brunswick Ave	04/03/2014 05:46 pm	Granby St / Yonge St	04/03/2014 06:00 pm	00:14:03
+218	Bloor St / Brunswick Ave	10/11/2013 05:47 pm	St George St / Bloor St W	10/11/2013 06:04 pm	00:17:21
+219	Queen St / Portland St	11/10/2013 04:47 pm	Wellesley St E. / Yonge St	11/10/2013 04:58 pm	00:10:14
+220	Bloor St / Brunswick Ave	09/11/2013 05:48 pm	St George St / Bloor St W	09/11/2013 06:08 pm	00:20:47
+221	University Ave / Elm St	07/30/2014 05:50 pm	College St / Huron St	07/30/2014 06:08 pm	00:17:55
+222	Bloor St / Brunswick Ave	10/05/2014 05:52 pm	Queens Park Cres E	10/05/2014 06:03 pm	00:10:58
+223	Elizabeth St / Edward St	04/18/2014 05:53 pm	Church St / Bloor St E	04/18/2014 06:08 pm	00:15:16
+224	Wellington St W / Bay St	03/06/2014 04:53 pm	College St / Huron St	03/06/2014 05:12 pm	00:18:34
+225	Queen St / Portland St	08/27/2013 05:56 pm	Bay St / Bloor St W	08/27/2013 06:14 pm	00:17:47
+226	Bloor St / Brunswick Ave	02/25/2013 04:58 pm	Euclid Ave / Bloor St	02/25/2013 05:20 pm	00:22:24
+227	Bloor St / Brunswick Ave	03/05/2014 04:58 pm	St George St / Bloor St W	03/05/2014 05:10 pm	00:11:56
+228	Queen St / Portland St	05/11/2013 05:58 pm	College St / Huron St	05/11/2013 06:18 pm	00:20:34
+229	Queen St / Portland St	06/22/2014 05:59 pm	University Ave / King St W	06/22/2014 06:19 pm	00:20:10
+230	Ft. York / Capreol Crt.	08/02/2013 06:01 pm	Bay St / Bloor St W	08/02/2013 06:15 pm	00:14:11
+231	Willcocks St / St George St	04/09/2014 06:01 pm	Jarvis St / Isabella St	04/09/2014 06:12 pm	00:10:07
+232	Queen St / Portland St	04/02/2013 06:04 pm	St George St / Bloor St W	04/02/2013 06:13 pm	00:09:33
+233	Yonge St / Lakeshore Ave. E.	07/05/2013 06:04 pm	College St / Huron St	07/05/2013 06:22 pm	00:17:17
+234	Niagara St / Richmond St W.	08/18/2014 06:05 pm	Simcoe St / Dundas St W	08/18/2014 06:20 pm	00:14:38
+235	Sherbourne St / Wellesley St	08/06/2014 06:06 pm	Bay St / Bloor St W	08/06/2014 06:29 pm	00:23:53
+236	Bond St / Queen St E	02/04/2013 05:06 pm	Queens Park Cres E	02/04/2013 05:24 pm	00:17:40
+237	Beverly  St / Dundas St W	09/27/2014 06:07 pm	Jarvis St / Carleton St	09/27/2014 06:20 pm	00:13:08
+238	Queen St / Portland St	04/04/2013 06:09 pm	Bay St / Bloor St W	04/04/2013 06:19 pm	00:09:52
+239	Sherbourne St / Wellesley St	03/18/2014 06:10 pm	St George St / Bloor St W	03/18/2014 06:22 pm	00:12:05
+240	Trinity / Front (Distillery)	12/07/2013 05:10 pm	University Ave / King St W	12/07/2013 05:27 pm	00:16:42
+241	Sherbourne St / Wellesley St	02/09/2014 05:12 pm	Queens Park Cres E	02/09/2014 05:25 pm	00:12:44
+242	Jarvis St / Carleton St	06/14/2014 06:14 pm	Granby St / Yonge St	06/14/2014 06:32 pm	00:17:34
+243	Bloor St / Brunswick Ave	12/07/2013 05:16 pm	Queen St / Portland St	12/07/2013 05:29 pm	00:13:19
+244	Wellesley St E. / Yonge St	12/18/2014 05:18 pm	Queens Park / Bloor St W	12/18/2014 05:33 pm	00:14:28
+245	Bloor St / Brunswick Ave	12/15/2014 05:19 pm	Wellesley St E. / Yonge St	12/15/2014 05:30 pm	00:11:20
+246	Bloor St / Brunswick Ave	10/13/2013 06:19 pm	Bay St / Bloor St W	10/13/2013 06:43 pm	00:24:31
+247	Bay St / Albert St	03/18/2014 06:21 pm	College St / Huron St	03/18/2014 06:38 pm	00:16:39
+248	Sherbourne St / Wellesley St	09/08/2013 06:22 pm	College St / Huron St	09/08/2013 06:39 pm	00:16:09
+249	Ted Rogers Way	11/14/2013 05:22 pm	Temperance St / Yonge St	11/14/2013 05:29 pm	00:06:32
+250	Queen St / Portland St	06/16/2013 06:23 pm	College St / Huron St	06/16/2013 06:42 pm	00:18:17
+251	Phoebe St / Spadina Ave	01/06/2013 05:27 pm	Queen St W / Spadina Ave	01/06/2013 05:37 pm	00:09:52
+252	Church St / Monteith St (Barbara Hall Park)	01/19/2013 05:28 pm	College St / Major St	01/19/2013 05:39 pm	00:10:32
+253	Bremner Blvd / Rees St	02/13/2013 05:29 pm	York St / Queens Quay W	02/13/2013 05:49 pm	00:19:35
+254	Sherbourne St / Wellesley St	07/09/2014 06:30 pm	King St W / Bay St	07/09/2014 06:42 pm	00:12:44
+255	Front St W / Blue Jays Way	12/07/2013 05:31 pm	University Ave / Elm St	12/07/2013 05:38 pm	00:06:15
+256	Richmond St E / Jarvis St	09/09/2014 06:32 pm	Huron St / Harbord St	09/09/2014 06:55 pm	00:23:50
+257	Sherbourne St / Wellesley St	02/26/2014 05:32 pm	Jarvis St / Isabella St	02/26/2014 05:35 pm	00:03:06
+258	Sherbourne St / Wellesley St	05/17/2013 06:34 pm	Ferry Ramp / Queens Quay W	05/17/2013 06:51 pm	00:17:51
+259	Bloor St / Brunswick Ave	03/18/2014 06:34 pm	Parliament St / Gerrard St	03/18/2014 06:54 pm	00:20:05
+260	St George St / Bloor St W	10/10/2014 06:34 pm	College St / Huron St	10/10/2014 06:46 pm	00:11:50
+261	Bay St / Albert St	07/30/2014 06:35 pm	Queen St W / Spadina Ave	07/30/2014 06:52 pm	00:17:13
+262	Granby St / Yonge St	01/01/2014 05:36 pm	King St W / Bay St	01/01/2014 05:53 pm	00:17:11
+263	Sherbourne St / Wellesley St	11/04/2013 05:37 pm	Widmer St / Adelaide St	11/04/2013 05:57 pm	00:20:12
+264	Queens Park Cres E	04/20/2014 06:38 pm	Elizabeth St / Edward St	04/20/2014 06:55 pm	00:17:25
+265	Bloor St / Brunswick Ave	10/06/2014 06:38 pm	St George St / Bloor St W	10/06/2014 06:52 pm	00:13:46
+266	Metro Hall Plaza	10/09/2014 06:40 pm	Bay St / Bloor St W	10/09/2014 06:59 pm	00:19:34
+267	Queen St / Portland St	05/11/2013 06:42 pm	Bremner Blvd / Rees St	05/11/2013 07:01 pm	00:19:00
+268	Ted Rogers Way	07/07/2013 06:44 pm	Spadina Ave / Sussex Ave	07/07/2013 06:54 pm	00:10:19
+269	Queen St / Portland St	03/25/2013 06:46 pm	Bay St / Bloor St W	03/25/2013 06:54 pm	00:07:59
+270	Bloor St / Brunswick Ave	08/01/2014 06:47 pm	College St / Huron St	08/01/2014 07:03 pm	00:15:48
+271	Bloor St / Brunswick Ave	03/22/2013 06:48 pm	Gould St / Mutual St	03/22/2013 07:01 pm	00:13:37
+272	Front/Yonge (Hockey Hall of Fame)	08/24/2014 06:50 pm	St George St / Bloor St W	08/24/2014 07:00 pm	00:10:04
+273	Bay St / St Joseph St	07/13/2014 06:50 pm	College St / Huron St	07/13/2014 07:06 pm	00:15:25
+274	Bloor St / Brunswick Ave	11/15/2014 05:50 pm	Lower Jarvis St / The Esplanade	11/15/2014 05:59 pm	00:08:24
+275	St George St / Bloor St W	12/05/2013 05:51 pm	Bay St / Bloor St W	12/05/2013 06:07 pm	00:15:48
+276	Beverly  St / Dundas St W	11/12/2014 05:51 pm	Granby St / Yonge St	11/12/2014 06:03 pm	00:11:52
+277	Jarvis St / Isabella St	07/24/2014 06:51 pm	Parliament St / Gerrard St	07/24/2014 07:11 pm	00:19:47
+278	Queen St / Portland St	09/26/2014 06:53 pm	College St / Huron St	09/26/2014 07:21 pm	00:27:07
+279	Sherbourne St / Wellesley St	10/14/2013 06:56 pm	Ft. York / Capreol Crt.	10/14/2013 07:06 pm	00:10:25
+280	Wellington St / Portland St	03/15/2013 06:57 pm	University Ave / College St	03/15/2013 07:17 pm	00:20:17
+281	Sherbourne / Carlton (Allan Gardens)	07/21/2013 06:58 pm	Bay St / Bloor St W	07/21/2013 07:18 pm	00:19:07
+282	Sherbourne St / Wellesley St	06/08/2014 06:59 pm	St George St / Bloor St W	06/08/2014 07:14 pm	00:14:38
+283	Bloor St / Brunswick Ave	09/16/2013 07:00 pm	St George St / Bloor St W	09/16/2013 07:13 pm	00:12:43
+284	Queen St / Portland St	10/05/2013 07:01 pm	College St / Huron St	10/05/2013 07:24 pm	00:22:52
+285	Bloor St / Brunswick Ave	01/25/2013 06:04 pm	Jarvis St / Carleton St	01/25/2013 06:09 pm	00:04:58
+286	Front St W / Blue Jays Way	01/14/2014 06:04 pm	Sherbourne St / Wellesley St	01/14/2014 06:16 pm	00:11:47
+287	Lower Jarvis St / The Esplanade	03/30/2013 07:06 pm	Sherbourne St / Wellesley St	03/30/2013 07:14 pm	00:07:48
+288	Queen St / Ossington Ave	10/04/2014 07:08 pm	Princess Ave / Adelaide St	10/04/2014 07:30 pm	00:21:58
+289	Bloor St / Brunswick Ave	02/25/2013 06:09 pm	College St / Huron St	02/25/2013 06:23 pm	00:14:02
+290	Queen St / Portland St	07/23/2014 07:10 pm	St George St / Bloor St W	07/23/2014 07:23 pm	00:12:22
+291	Bay St / College St	09/11/2014 07:22 pm	Bathurst St / Dundas St	09/11/2014 07:53 pm	00:30:55
+292	Church St / Bloor St E	01/28/2013 06:22 pm	St George St / Bloor St W	01/28/2013 06:37 pm	00:14:44
+293	Madison Ave / Bloor St W	07/20/2013 07:29 pm	Euclid Ave / Bloor St	07/20/2013 07:41 pm	00:12:46
+294	Bloor St / Brunswick Ave	04/11/2014 07:32 pm	Wellesley St E. / Yonge St	04/11/2014 07:49 pm	00:16:29
+295	Front/Yonge (Hockey Hall of Fame)	07/24/2014 07:39 pm	Richmond St E / Jarvis St	07/24/2014 07:46 pm	00:07:09
+296	Bloor St / Brunswick Ave	10/18/2013 07:41 pm	St George St / Bloor St W	10/18/2013 07:58 pm	00:17:27
+297	Bloor St / Brunswick Ave	11/09/2014 06:51 pm	St George St / Bloor St W	11/09/2014 07:06 pm	00:14:31
+298	Dundas St / Yonge St	10/11/2013 07:57 pm	Queen St W / Spadina Ave	10/11/2013 08:15 pm	00:17:20
+299	Bloor St / Brunswick Ave	11/04/2013 07:05 pm	Gerrard St E / Church St	11/04/2013 07:15 pm	00:10:05
+300	Lower Jarvis St / The Esplanade	07/28/2013 08:25 pm	Queen St / Portland St	07/28/2013 08:35 pm	00:09:53
