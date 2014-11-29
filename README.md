@@ -10,8 +10,9 @@ A report of usage statistics are also generated using R Markdown (in development
 
 ## Requirements
  * R plus the following packages:
+  * rjson
   * ggmap
-  * plyr
+  * dplyr
   * stringr
 
 ## Usage
