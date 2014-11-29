@@ -6,7 +6,7 @@ source("R/mapper_funcs.R")
 stations <- get_bike_share_data()
 
 # Load data ####
-input_file <- "data/ride_data.txt"
+input_file <- "sample_data/ride_data.txt"
 data <- get_ride_data(input_file)
 
 # Get frequencies ####
