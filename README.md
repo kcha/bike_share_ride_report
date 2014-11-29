@@ -22,8 +22,7 @@ A report of usage statistics are also generated using R Markdown (in development
 There's two ways to download your ride data: 
 1. Logging into your online account and copy and paste all of your trip data to
 a text file; or 
-2. Automatically downloading your data using the provided script (requires your
-login credentials) (not available yet)
+2. Automatically downloading your data using your credentials (not available yet)
 
 The format of the data should be exactly as it appears when viewing your trip data.
 
