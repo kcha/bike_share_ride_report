@@ -20,6 +20,7 @@ A summary report of usage statistics is generated using R Markdown.
 ### Getting ride data
 
 There's two ways to download your ride data: 
+
 1. Logging into your online account and copy and paste all of your trip data to
 a text file; or 
 2. Automatically downloading your data using your credentials (not available yet)
