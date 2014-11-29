@@ -19,11 +19,11 @@ end.dates <- start.dates + rnorm(N, 900, 300) # avg 15 min +/- 5 min
 rdata <- data.frame(
   Trip = 1:N,
   Start.Station = stations[start.id, "stationName"],
-  Start.Date = format(start.dates, "%m/%d/%Y %H:%M %p"),
+  Start.Date = format(start.dates, "%m/%d/%Y %I:%M %p"),
   End.Station = stations[end.id, "stationName"],
-  End.Date = format(end.dates, "%m/%d/%Y %H:%M %p"),
+  End.Date = format(end.dates, "%m/%d/%Y %I:%M %p"),
   Duration = format(.POSIXct(difftime(end.dates, start.dates, unit = "secs"), 
-                             tz="GMT"), "%H:%M:%S")
+                             tz="GMT"), "%I:%M:%S")
 )
 
 write.table(rdata, file="", quote=F, row.names=F, sep="\t")
