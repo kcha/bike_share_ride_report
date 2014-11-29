@@ -4,3 +4,5 @@ data
 .RData
 .Rhistory
 .DS_Store
+.Rproj.user
+*.Rproj
