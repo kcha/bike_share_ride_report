@@ -35,7 +35,8 @@ duration_to_minutes <- function(dur) {
 
 get_ride_data <- function(ride_data) {
   write(paste("Reading ride data from", ride_data), stderr())
-  data <- read.table(input_file, header = TRUE, sep = "\t", stringsAsFactors=FALSE)
+  data <- read.table(input_file, header = TRUE, sep = "\t", 
+                     stringsAsFactors=FALSE)
   data$Duration <- duration_to_minutes(data$Duration)
   data$Start.Station <- cleanse_station_names(data$Start.Station)
   data$End.Station <- cleanse_station_names(data$End.Station)
@@ -63,14 +64,27 @@ get_bike_share_data <- function(
   return(stations)
 }
 
-generate_random_dates <- function(ndates, start = "2013/01/01 00:00 AM", end = "2014/12/31 12:00 PM") {
+generate_random_dates <- function(ndates, start = "2013/01/01 00:00 AM", 
+                                  end = "2014/12/31 12:00 PM") {
+  # Generate random dates and times given a start and end date
   first <- as.POSIXct(strptime(start, "%Y/%m/%d %H:%M %p"))
   last <- as.POSIXct(strptime(end, "%Y/%m/%d %H:%M %p"))
   td <- last - first
   
   # first day + random day + random time of day
-  rdates <- first + sample(as.numeric(dt), ndates) * 86400 + 
+  rdates <- first + sample(as.numeric(td), ndates) * 86400 + 
     runif(ndates, 1, 86400) 
   rdates <- sort(rdates)
   return(rdates)  
+}
+
+calculate_bbox <- function(lon, lat, offset = 0.1) {
+  # Calcualte bounding box for get_map() given a set of longitudes and 
+  # corresponding latitudes
+  #
+  # From ggmap documentation:
+  # bbox - a bounding box in the format c(lowerleftlon, lowerleftlat, 
+  #           upperrightlon, upperrightlat)
+  c(min(lon) - offset, min(lat) - offset, max(lon) + offset, max(lat) + offset)
+  
 }

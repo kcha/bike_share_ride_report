@@ -27,7 +27,9 @@ freq <- rbind(data.frame(ddply(starts, .(stationName, longitude, latitude),
                          type = "End"))
   
 # Load map ####
-city <- get_map("toronto", zoom=14, maptype = "roadmap")
+# city <- get_map("downtown toronto", zoom=13, maptype = "roadmap")
+city <- get_map(calculate_bbox(freq$longitude, freq$latitude), zoom=14, 
+                maptype = "roadmap")
 
 # Plot map ####
 gp1 <- ggmap(city, extent = 'device') + 
@@ -36,5 +38,4 @@ gp1 <- ggmap(city, extent = 'device') +
   scale_colour_gradient("Number of Visits", low="orange", high="red") + 
   facet_wrap(~ type, ncol = 2) + 
   ggtitle(input_file) 
-
 print(gp1)
