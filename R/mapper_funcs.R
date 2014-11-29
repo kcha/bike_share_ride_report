@@ -1,7 +1,10 @@
 library(stringr)
 library(rjson)
 library(assertthat)
+library(ggmap)
+library(dplyr)
 
+# Data pre-processing functions ####
 cleanse_station_names <- function(stations) {
   # Correct station names that have been moved
   stations <- trim(stations)
@@ -33,6 +36,7 @@ duration_to_minutes <- function(dur) {
   return(round(minutes, digits=2))
 }
 
+# Data I/O functions ####
 get_ride_data <- function(ride_data) {
   write(paste("Reading ride data from", ride_data), stderr())
   data <- read.table(input_file, header = TRUE, sep = "\t", 
@@ -64,20 +68,38 @@ get_bike_share_data <- function(
   return(stations)
 }
 
-generate_random_dates <- function(ndates, start = "2013/01/01 00:00 AM", 
+# Data processing ####
+calculate_station_frequencies <- function(data, stations) {
+  # Calculate station frequencies given ride data 
+  #
+  # Return data frame of start and end stations, their frequencies, and 
+  # coordinates
+  rbind(data.frame(stationName=data$Start.Station, type = "Start", 
+                   stringsAsFactors=FALSE), 
+        data.frame(stationName=data$End.Station, type = "End", 
+                   stringsAsFactors=FALSE)) %>%
+    group_by(stationName, type) %>%
+    summarize(N = length(stationName)) %>%
+    inner_join(., stations[, c("stationName", "latitude", "longitude")]) %>%
+    as.data.frame
+}
+
+# Misc functions ####
+generate_random_dates <- function(ndates, start = "2013/01/01 12:00 AM", 
                                   end = "2014/12/31 12:00 PM") {
   # Generate random dates and times given a start and end date
-  first <- as.POSIXct(strptime(start, "%Y/%m/%d %H:%M %p"))
-  last <- as.POSIXct(strptime(end, "%Y/%m/%d %H:%M %p"))
+  first <- as.POSIXct(strptime(start, "%Y/%m/%d %I:%M %p"))
+  last <- as.POSIXct(strptime(end, "%Y/%m/%d %I:%M %p"))
   td <- last - first
   
   # first day + random day + random time of day
   rdates <- first + sample(as.numeric(td), ndates) * 86400 + 
-    runif(ndates, 1, 86400) 
-  rdates <- sort(rdates)
+    runif(ndates, 1, 86400) %>%
+    sort
   return(rdates)  
 }
 
+# Plotting functions ####
 calculate_bbox <- function(lon, lat, offset = 0.1) {
   # Calcualte bounding box for get_map() given a set of longitudes and 
   # corresponding latitudes
@@ -85,6 +107,17 @@ calculate_bbox <- function(lon, lat, offset = 0.1) {
   # From ggmap documentation:
   # bbox - a bounding box in the format c(lowerleftlon, lowerleftlat, 
   #           upperrightlon, upperrightlat)
-  c(min(lon) - offset, min(lat) - offset, max(lon) + offset, max(lat) + offset)
+  c(min(lon) - offset, min(lat) - offset, max(lon) + offset, max(lat) + offset)  
+}
+
+map_stations <- function(df) {
+  city <- get_map(calculate_bbox(df$longitude, df$latitude), zoom=14, 
+                  maptype = "roadmap")
   
+  gp1 <- ggmap(city, extent = 'device') + 
+    geom_point(aes(x = longitude, y = latitude, colour = N, size = N), 
+               data = df) + 
+    scale_size_continuous("", range = c(3,9)) +
+    scale_colour_gradient("Number of Visits", low="orange", high="red")
+  return(gp1)
 }
