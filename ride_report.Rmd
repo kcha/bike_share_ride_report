@@ -1,0 +1,144 @@
+---
+title: "Bike Share TO Ride Report"
+date: "November 28, 2014"
+output: html_document
+---
+
+```{r header, echo=FALSE, warning=FALSE, include=FALSE}
+library(knitr)
+opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE)
+
+source("R/mapper_funcs.R")
+# Load bike share stations ####
+stations <- get_bike_share_data()
+
+# Load data ####
+input_file <- "data/ride_data.txt"
+data <- get_ride_data(input_file)
+```
+
+Ride data: ``r input_file``
+
+## Summary Statistics
+
+```{r stats, include=FALSE}
+freq <- calculate_station_frequencies(data, stations)
+
+most_start <- which(freq$N == max(freq[freq$type=="Start", "N"]) & 
+                      freq$type == "Start")
+most_end <- which(freq$N == max(freq[freq$type=="End", "N"]) & 
+                    freq$type == "End")
+
+avg_ride <- round(mean(data$Duration), digits=2)
+shortest_trip<- which.min(data$Duration)
+longest_trip <- which.max(data$Duration)
+most_freq_trips <- data %>% 
+  group_by(Start.Station, End.Station) %>% 
+  summarize(N = length(Start.Station), 
+            Avg.Duration = round(mean(Duration), digits=2)) %>% 
+  mutate(route = paste(Start.Station, "to", End.Station)) %>%
+  as.data.frame %>%
+  arrange(desc(N))
+
+ddf <- format_by_datetime(data)
+
+most_trips_in_day <- ddf %>% group_by(dy, mo, yr) %>%
+  summarize(N = length(route)) %>%
+  subset(N == max(N)) %>%
+  mutate(date = paste(mo, dy, yr, sep="/")) %>% 
+  as.data.frame
+```
+
+- Total rides: `r nrow(data)`
+- Most frequent start station, visits: `r freq[most_start, c("stationName", "N")]`
+- Most frequent end station, visits: `r freq[most_end, c("stationName", "N")]`
+- Average ride time: `r avg_ride` minutes
+- Shortest trip: `r data[shortest_trip, "Start.Station"]` to 
+`r data[shortest_trip, "End.Station"]`, `r data[shortest_trip, "Duration"]` minutes
+- Longest trip: `r data[longest_trip, "Start.Station"]` to 
+`r data[longest_trip, "End.Station"]`, `r data[longest_trip, "Duration"]` minutes
+- Most popular trips:
+    1. `r most_freq_trips[1, "route"]`, `r most_freq_trips[1, "N"]`
+    1. `r most_freq_trips[2, "route"]`, `r most_freq_trips[2, "N"]`
+    1. `r most_freq_trips[3, "route"]`, `r most_freq_trips[3, "N"]`
+- Most trips in one day: `r unique(most_trips_in_day$N)` (`r most_trips_in_day[,"date"]`)
+
+## Map
+```{r ride_map, fig.width=10, fig.height=7, cache=TRUE}
+print(map_stations(df = freq) + facet_wrap(~ type, ncol = 2) +
+  ggtitle("Map of visited stations"))
+```
+
+```{r ride_map_merged, fig.width=7, fig.height=7, cache=TRUE}
+print(map_stations(df = aggregate(N ~ stationName + latitude + longitude, 
+                                  data = freq, sum)) + 
+        ggtitle("Map of all visited stations"))
+```
+
+## Graphs
+```{r plot_by_month, fig.width=8, fig.height=5}
+ddf %>% group_by(yr, mo, mo.abbr) %>% 
+  summarize(N = length(mo)) %>%
+  arrange(yr, mo) %>%
+  ggplot(aes(x = mo.abbr, 
+             y = N, 
+             fill = yr)) + 
+  geom_bar(stat = "identity", position="dodge") +
+  xlab("Month") + ylab("Number of trips") +
+  ggtitle("Number of trips by month and year")
+```
+
+```{r plot_trip_by_day, fig.width=10, fig.height=7, cache=TRUE}
+ddf %>% group_by(yr, mo, mo.abbr, dy) %>%
+  summarize(avg.duration = round(mean(duration), digits=2),
+            sd = round(sd(duration), digits=2)) %>%
+  ggplot(aes(x = dy,
+             y = avg.duration, color=yr, group=yr)) +
+  geom_point() +
+  geom_line() +
+  geom_errorbar(aes(ymin = avg.duration - sd, ymax = avg.duration + sd, 
+                    color = yr), 
+                width = 0.2, position=position_dodge(width = 0.1)) +
+  facet_wrap(~ mo.abbr, scale="free_x") +
+  theme(axis.text.x = element_text(angle= 45, hjust = 1, size=8)) +
+  xlab("Day") + ylab("Duration") +
+  ggtitle("Trip duration by day")
+```
+
+```{r plot_trip_by_month, fig.width=10, fig.height=5}
+ddf %>%
+  ggplot(aes(x = mo.abbr,
+             y = duration, fill=yr)) +
+  geom_boxplot(position="dodge") +
+  xlab("Month") + ylab("Duration") +
+  ggtitle("Trip duration by month")
+```
+
+```{r plot_trip_by_station, fig.width=10, fig.height=10}
+ddf %>% group_by(yr, mo, mo.abbr, route) %>%
+  summarize(N = length(route),
+            avg.duration = round(mean(duration), digits=2),
+            sd = round(sd(duration), digits=2)) %>%
+  subset(route %in% most_freq_trips[1:5, "route"]) %>%
+  ggplot(aes(x = mo.abbr,
+             y = avg.duration, group=yr)) +
+  geom_point(aes(color=yr)) +
+  geom_line(aes(color=yr)) +
+  geom_errorbar(aes(ymin = avg.duration - sd, ymax = avg.duration + sd, 
+                    color = yr), 
+                width = 0.2, position=position_dodge(width = 0.1)) +
+  facet_wrap(~ route, ncol =2, scale="free_x") +
+  xlab("Month") + ylab("Average Duration") +
+  ggtitle("Trip duration by most frequent routes")
+```
+
+```{r plot_time_of_day, fig.width=10, fig.height=5}
+ddf %>% 
+  mutate(HR=as.numeric(as.character(hr)) + 
+           as.numeric(as.character(min))/60) %>%
+  ggplot(aes(x = HR)) +
+  geom_histogram(binwidth = 0.5) +
+  xlab("Time (24 hr)") + ylab("Frequency") +
+  ggtitle("Trips by time of day") +
+  scale_x_continuous(breaks = seq(1,24,1))
+```
