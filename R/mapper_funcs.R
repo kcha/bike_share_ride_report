@@ -109,15 +109,21 @@ format_by_datetime <- function(data) {
 
 # Misc functions ####
 generate_random_dates <- function(ndates, start = "2013/01/01 12:00 AM", 
-                                  end = "2014/12/31 12:00 PM") {
+                                  end = "2014/12/25 12:00 PM") {
   # Generate random dates and times given a start and end date
   first <- as.POSIXct(strptime(start, "%Y/%m/%d %I:%M %p"))
   last <- as.POSIXct(strptime(end, "%Y/%m/%d %I:%M %p"))
   td <- last - first
   
+  # Weight times in morning and afternoon to simulate a more realistic times
+  i <- round(ndates / 2)
+  random_time <- c(round(rnorm(i, 32400, 3600)),
+                   round(rnorm(ndates - i, 61200, 3600)))
+  assert_that(length(random_time) == ndates)
+  
   # first day + random day + random time of day
-  rdates <- first + sample(as.numeric(td), ndates) * 86400 + 
-    runif(ndates, 1, 86400) %>%
+  rdates <- first + sample(as.numeric(td), ndates, replace=TRUE) * 86400 +
+    random_time %>%
     sort
   return(rdates)  
 }
