@@ -6,3 +6,5 @@ data
 .DS_Store
 .Rproj.user
 *.Rproj
+ride_report_cache
+ride_report_files
