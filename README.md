@@ -2,7 +2,6 @@
 
 **For [Bike Share Toronto](https://www.bikesharetoronto.com/) users.**
 
-I was curious to see what were my usage patterns and which docks I frequently visited.
 This program takes your personal ride data and creates a map of your dock usage.
 The maps are created in R using the
 [ggmap](http://cran.r-project.org/web/packages/ggmap/index.html) package.
