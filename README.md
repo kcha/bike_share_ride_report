@@ -19,13 +19,14 @@ A summary report of usage statistics is generated using R Markdown.
 
 ### Station data
 
-Bike station geolocation data is updated from http://www.bikesharetoronto.com/stations/json
+Bike station geolocation data is obtained from http://www.bikesharetoronto.com/stations/json
 
 ### Getting ride data
 
 Currently, the only way to get ride data is to log into your online account and
 manually copy and paste all of your trip data to a text file. The format of the
-trip data should be exactly as it appears when viewing your data online.
+trip data should be exactly as it appears when viewing your data online. See
+`sample_data/ride_data.txt` for an example.
 
 ## Disclaimer
 This is a personal project and not affiliated with Bike Share Toronto.
