@@ -2,7 +2,7 @@
 
 **For [Bike Share Toronto](https://www.bikesharetoronto.com/) users.**
 
-This program takes your personal ride data and creates a map of your dock usage.
+This program takes your personal ride data and creates a map of your station usage.
 The maps are created in R using the
 [ggmap](http://cran.r-project.org/web/packages/ggmap/index.html) package.
 
@@ -17,16 +17,15 @@ A summary report of usage statistics is generated using R Markdown.
 
 ## Usage
 
+### Station data
+
+Bike station geolocation data is updated from http://www.bikesharetoronto.com/stations/json
+
 ### Getting ride data
 
-There's two ways to download your ride data: 
-
-1. Logging into your online account and copy and paste all of your trip data to
-a text file; or 
-2. Automatically downloading your data using your credentials (not available yet)
-
-The format of the trip data should be exactly as it appears when viewing your
-data online.
+Currently, the only way to get ride data is to log into your online account and
+manually copy and paste all of your trip data to a text file. The format of the
+trip data should be exactly as it appears when viewing your data online.
 
 ## Disclaimer
 This is a personal project and not affiliated with Bike Share Toronto.
