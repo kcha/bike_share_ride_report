@@ -1,5 +1,6 @@
 *.md
 *.png
+*.html
 .RData
 .Rhistory
 .DS_Store
@@ -8,6 +9,5 @@
 
 data
 cache
-ride_report.html
 ride_report_cache
 ride_report_files
