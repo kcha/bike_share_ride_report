@@ -1,11 +1,13 @@
-data
-
+*.md
 *.png
 .RData
 .Rhistory
 .DS_Store
 .Rproj.user
 *.Rproj
+
+data
+cache
 ride_report.html
 ride_report_cache
 ride_report_files
