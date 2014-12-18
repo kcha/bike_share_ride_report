@@ -7,7 +7,7 @@ The maps are created in R using the
 [ggmap](http://cran.r-project.org/web/packages/ggmap/index.html) package.
 
 A summary report of usage statistics is generated using R Markdown (see
-this [sample report](http://individual.utoronto.ca/hakevin/sample_ride_report.html) 
+this [sample report](http://individual.utoronto.ca/hakevin/projects/ride_report/sample.html) 
 for an example). 
 
 ## Requirements
