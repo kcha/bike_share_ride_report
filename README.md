@@ -1,4 +1,4 @@
-# Bike Share Toronto Ride Mapper
+# Bike Share Toronto Ride Report
 
 **For [Bike Share Toronto](https://www.bikesharetoronto.com/) users.**
 
