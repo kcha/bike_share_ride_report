@@ -17,6 +17,7 @@ for an example).
   * ggmap
   * dplyr
   * stringr
+  * assertthat
 
 ## Usage
 
