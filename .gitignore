@@ -1,11 +1,10 @@
-*.md
 *.png
 *.html
 .RData
 .Rhistory
 .DS_Store
 .Rproj.user
-*.Rproj
+ride_report.md
 
 data
 cache
