@@ -2,7 +2,6 @@
 title: "Bike Share TO Ride Report"
 output: html_document
 ---
-https://github.com/kcha/bike_share_ride_report
 
 ```{r header, echo=FALSE, warning=FALSE, include=FALSE}
 library(knitr)
@@ -198,3 +197,10 @@ ggplot(trips_in_day, aes(x = N, fill = yr, group = yr)) +
   xlab("Trips per day") + ylab("Count") +
   ggtitle("Number of trips per day")
 ```
+
+<center>
+<hr>
+&copy; 2014, 2015 Kevin Ha
+
+https://github.com/kcha/bike_share_ride_report
+</center>
