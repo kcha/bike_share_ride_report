@@ -139,9 +139,8 @@ generate_random_dates <- function(ndates, start = "2013/01/01 12:00 AM",
   
   # first day + random day + random time of day
   rdates <- first + sample(as.numeric(td), ndates, replace=TRUE) * 86400 +
-    random_time %>%
-    sort
-  return(rdates)  
+    random_time
+  return(sort(rdates))
 }
 
 # Plotting functions ####
