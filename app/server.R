@@ -78,6 +78,7 @@ shinyServer(function(input, output, session) {
     earliest <- with(Data()$ddf, paste(min(yr), min(mo), min(dy), sep = "-"))
     
     updateDateRangeInput(session, "date_range_map", start = earliest, end = latest)
+    updateDateRangeInput(session, "date_range_chart", start = earliest, end = latest)
     
   })
   
