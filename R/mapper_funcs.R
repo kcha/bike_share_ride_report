@@ -146,7 +146,7 @@ calculate_bbox <- function(lon, lat, offset = 0.1) {
 
 map_stations <- function(df) {
   city <- get_map(calculate_bbox(df$longitude, df$latitude), zoom=14, 
-                  maptype = "roadmap")
+                  maptype = "roadmap", scale = 2)
   
   gp1 <- ggmap(city, extent = 'device') + 
     geom_point(aes(x = longitude, y = latitude, colour = N, size = N), 
