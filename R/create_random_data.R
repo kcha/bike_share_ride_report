@@ -36,5 +36,6 @@ rdata <- data.frame(
   Duration = format(.POSIXct(difftime(end_dates, start_dates, unit = "secs"), 
                              tz="GMT"), "%H:%M:%S")
 )
+rdata <- rdata[order(rdata$Trip, decreasing = TRUE),]
 
 write.table(rdata, file="", quote=F, row.names=F, sep="\t")
