@@ -1,4 +1,4 @@
-# Introduction
+# Usage
 
 This Shiny app takes your personal ride data from [Bike Share Toronto](https://www.bikesharetoronto.com/) 
 and creates a collection of summary reports of your ride usage.
