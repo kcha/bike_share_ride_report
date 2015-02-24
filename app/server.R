@@ -156,7 +156,7 @@ shinyServer(function(input, output, session) {
       
       print(gp)
     })
-  })
+  }, height = 800)
   
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Render plots
