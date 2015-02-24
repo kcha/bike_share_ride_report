@@ -80,12 +80,11 @@ shinyServer(function(input, output, session) {
     updateNumericInput(session, "max_map_ride_freq", value = max(Data()$freq$N))  
     
     # Get earliest and latest dates
-    latest <- with(Data()$ddf, paste(max(yr), max(mo), max(dy), sep = "-"))
-    earliest <- with(Data()$ddf, paste(min(yr), min(mo), min(dy), sep = "-"))
-    
+    latest <- with(Data()$ddf, max(paste(yr, mo, dy, sep = "-")))
+    earliest <- with(Data()$ddf, min(paste(yr, mo, dy, sep = "-")))
+
     updateDateRangeInput(session, "date_range_map", start = earliest, end = latest)
-    updateDateRangeInput(session, "date_range_chart", start = earliest, end = latest)
-    
+    updateDateRangeInput(session, "date_range_chart", start = earliest, end = latest)  
   })
   
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
