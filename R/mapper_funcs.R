@@ -95,7 +95,7 @@ calculate_station_frequencies <- function(data, stations, start = NULL,
     as.data.frame
 }
 
-format_by_datetime <- function(data) {
+format_by_datetime <- function(data, start = NULL, end = NULL) {
   # Create a new data frame with different time formats
   dates <- convert_date_time(data$Start.Date)
   ddf <- data.frame(
@@ -108,6 +108,16 @@ format_by_datetime <- function(data) {
     min = strftime(dates, "%M"),  
     route = paste(data$Start.Station, "to", data$End.Station)
   )
+  assert_that(nrow(ddf) == nrow(data))
+  if (!is.null(start)) {
+    ix <- which(dates >= start)
+  }
+  if (!is.null(end)) {
+    ix <- intersect(ix, which(dates <= end))
+  }
+  if (exists("ix")) {
+    ddf <- ddf[ix,]
+  }
   ddf$mo <- factor(ddf$mo, levels=sort(unique(ddf$mo)), ordered=T)
   ddf$dy <- factor(ddf$dy, levels=sort(unique(ddf$dy)), ordered=T)
   ddf$yr <- factor(ddf$yr, levels=sort(unique(ddf$yr)), ordered=T)

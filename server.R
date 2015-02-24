@@ -207,7 +207,10 @@ shinyServer(function(input, output, session) {
   # Render plots
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   output$charts <- renderPlot({
-    Data()$ddf %>% group_by(yr, mo, mo.abbr) %>% 
+    format_by_datetime(Data()$data, 
+                       format(input$date_range_chart[1]), 
+                       format(input$date_range_chart[2])) %>%
+    group_by(yr, mo, mo.abbr) %>% 
       summarize(N = length(mo)) %>%
       arrange(yr, mo) %>%
       ggplot(aes(x = mo.abbr, 
