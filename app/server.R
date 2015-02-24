@@ -59,7 +59,9 @@ shinyServer(function(input, output, session) {
       most_freq_trips=most_freq_trips,
       trips_in_day=trips_in_day,
       most_trips_in_day=paste(unique(most_trips_in_day$N), 
-                              paste0("(", most_trips_in_day[,"date"], ")")
+                              paste0("(", 
+                                     paste(most_trips_in_day$date, collapse=", "), 
+                                     ")")
                               ),
       ddf=ddf)
     return(info)
