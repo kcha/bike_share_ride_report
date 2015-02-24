@@ -72,6 +72,13 @@ shinyServer(function(input, output, session) {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   observe({
     updateNumericInput(session, "max_map_ride_freq", value = max(Data()$freq$N))  
+    
+    # Get earliest and latest dates
+    latest <- with(Data()$ddf, paste(max(yr), max(mo), max(dy), sep = "-"))
+    earliest <- with(Data()$ddf, paste(min(yr), min(mo), min(dy), sep = "-"))
+    
+    updateDateRangeInput(session, "date_range_map", start = earliest, end = latest)
+    
   })
   
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -113,11 +120,15 @@ shinyServer(function(input, output, session) {
         need(input$min_map_ride_freq <= input$max_map_ride_freq, "Invalid range")
       )
       
+      freq <- calculate_station_frequencies(Data()$data, stations, 
+                                            format(input$date_range_map[1]),
+                                            format(input$date_range_map[2]))
+      
       # Check map setting
       withProgress(message = 'Generating plot', value = 0.1, {
         if (input$facet_map == "all") {
           agg <- aggregate(N ~ stationName + latitude + longitude,
-                           data = Data()$freq, sum) %>%
+                           data = freq, sum) %>%
             filter(N >= input$min_map_ride_freq, N <= input$max_map_ride_freq)
           validate(need(nrow(agg) > 0, "No matching results"))
           incProgress(0.5)
@@ -125,7 +136,7 @@ shinyServer(function(input, output, session) {
           incProgress(0.3) 
           gp <- gp + ggtitle("Map of all visited stations")
         } else {
-          df <- filter(Data()$freq, 
+          df <- filter(freq, 
                        N >= input$min_map_ride_freq,
                        N <= input$max_map_ride_freq)
           validate(need(nrow(df) > 0, "No matching results"))
