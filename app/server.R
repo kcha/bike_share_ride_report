@@ -67,6 +67,12 @@ shinyServer(function(input, output, session) {
     return(info)
   })  
   
+  Freq <- reactive({
+    calculate_station_frequencies(Data()$data, stations, 
+                                  format(input$date_range_map[1]),
+                                  format(input$date_range_map[2]))
+  })
+  
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Update maximum ride frequency for maps
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -121,9 +127,7 @@ shinyServer(function(input, output, session) {
         need(input$min_map_ride_freq <= input$max_map_ride_freq, "Invalid range")
       )
       
-      freq <- calculate_station_frequencies(Data()$data, stations, 
-                                            format(input$date_range_map[1]),
-                                            format(input$date_range_map[2]))
+      freq <- Freq()
       
       # Check map setting
       withProgress(message = 'Generating plot', value = 0.1, {
