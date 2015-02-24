@@ -1,8 +1,6 @@
 library(shiny)
 
 shinyUI(fluidPage(
-#   title = 'Bike Share Toronto Report',
-  
   headerPanel("Bike Share Toronto Ride Visualization and Report"),
   
   sidebarLayout(
@@ -30,9 +28,9 @@ shinyUI(fluidPage(
           ),
           conditionalPanel(
             'input.dataset == "Maps"',
-            radioButtons("facet_map", "Choose map type:",
-                         c("Show all stations in one map" = "all",
-                           "Facet by start and end station" ="facet")
+            selectInput("facet_map", "Choose facet type:",
+                         c("None" = "all",
+                           "Facet by start and end station" = "facet")
                          ),
             numericInput("min_map_ride_freq", "Minimum:", 1, min = 1),
             numericInput("max_map_ride_freq", "Maximum:", 100, min = 1),
@@ -60,7 +58,6 @@ shinyUI(fluidPage(
             
           )
         )
-
       ),
       
       wellPanel(
