@@ -133,6 +133,7 @@ ddf %>% group_by(yr, mo, mo.abbr) %>%
              fill = yr)) + 
   geom_bar(stat = "identity", position="dodge") +
   xlab("Month") + ylab("Number of trips") +
+  scale_fill_discrete("Year") +
   ggtitle("Number of trips by month and year")
 ```
 

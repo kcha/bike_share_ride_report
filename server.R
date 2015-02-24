@@ -215,6 +215,7 @@ shinyServer(function(input, output, session) {
                  fill = yr)) + 
       geom_bar(stat = "identity", position="dodge") +
       xlab("Month") + ylab("Number of trips") +
+      scale_fill_discrete("Year") +
       ggtitle("Number of trips by month and year")
   })
   
