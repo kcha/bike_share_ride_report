@@ -130,7 +130,7 @@ shinyServer(function(input, output, session) {
       freq <- Freq()
       
       # Check map setting
-      withProgress(message = 'Generating plot', value = 0.1, {
+      withProgress(message = 'Generating map', value = 0.1, {
         if (input$facet_map == "all") {
           agg <- aggregate(N ~ stationName + latitude + longitude,
                            data = freq, sum) %>%
