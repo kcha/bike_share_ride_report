@@ -1,6 +1,6 @@
 library(shiny)
-source("../R/mapper_funcs.R")
-source("../R/weather_funcs.R")
+source("R/mapper_funcs.R")
+source("R/weather_funcs.R")
 
 shinyServer(function(input, output, session) {
   
