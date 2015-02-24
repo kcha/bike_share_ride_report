@@ -1,5 +1,6 @@
 library(shiny)
 source("../R/mapper_funcs.R")
+source("../R/weather_funcs.R")
 
 shinyServer(function(input, output, session) {
   
@@ -15,55 +16,97 @@ shinyServer(function(input, output, session) {
       data <- get_ride_data(input$file$datapath)  
     }  
     
-    freq <- calculate_station_frequencies(data, stations)
-    
-    most_start <- which(freq$N == max(freq[freq$type=="Start", "N"]) & 
-                          freq$type == "Start")
-    most_end <- which(freq$N == max(freq[freq$type=="End", "N"]) & 
-                        freq$type == "End")
-    
-    avg_ride <- round(mean(data$Duration), digits=2)
-    shortest_trip<- which.min(data$Duration)
-    longest_trip <- which.max(data$Duration)
-    most_freq_trips <- data %>% 
-      group_by(Start.Station, End.Station) %>% 
-      summarize(N = length(Start.Station), 
-                Avg.Duration = round(mean(Duration), digits=2)) %>% 
-      mutate(route = paste(Start.Station, "to", End.Station)) %>%
-      as.data.frame %>%
-      arrange(desc(N))
-    
-    ddf <- format_by_datetime(data)
-    
-    trips_in_day <- ddf %>% group_by(dy, mo, yr) %>% 
-      summarize(N = length(route))
-    
-    most_trips_in_day <- trips_in_day %>%
-      subset(N == max(N)) %>%
-      mutate(date = paste(mo, dy, yr, sep="/")) %>% 
-      as.data.frame
-    
-    info <- list(
-      data=data, 
-      stations=stations,
-      freq=freq,
-      most_start=freq[most_start, c("stationName", "N")],
-      most_end=freq[most_end, c("stationName", "N")],
-      avg_ride=avg_ride,
-      shortest_trip=paste(data[shortest_trip, "Start.Station"], "to", 
-                          data[shortest_trip, "End.Station"], ",", 
-                          data[shortest_trip, "Duration"], "minutes"),
-      longest_trip=paste(data[longest_trip, "Start.Station"], "to", 
-                         data[longest_trip, "End.Station"], ",", 
-                         data[longest_trip, "Duration"], "minutes"),
-      most_freq_trips=most_freq_trips,
-      trips_in_day=trips_in_day,
-      most_trips_in_day=paste(unique(most_trips_in_day$N), 
-                              paste0("(", 
-                                     paste(most_trips_in_day$date, collapse=", "), 
-                                     ")")
-                              ),
-      ddf=ddf)
+    withProgress(message = "Processing ride data", value = 0.1, {
+      freq <- calculate_station_frequencies(data, stations)
+      
+      incProgress(0.1)
+      
+      most_start <- which(freq$N == max(freq[freq$type=="Start", "N"]) & 
+                            freq$type == "Start")
+      most_end <- which(freq$N == max(freq[freq$type=="End", "N"]) & 
+                          freq$type == "End")
+      
+      avg_ride <- round(mean(data$Duration), digits=2)
+      shortest_trip<- which.min(data$Duration)
+      longest_trip <- which.max(data$Duration)
+      most_freq_trips <- data %>% 
+        group_by(Start.Station, End.Station) %>% 
+        summarize(N = length(Start.Station), 
+                  Avg.Duration = round(mean(Duration), digits=2)) %>% 
+        mutate(route = paste(Start.Station, "to", End.Station)) %>%
+        as.data.frame %>%
+        arrange(desc(N))
+      
+      incProgress(0.1)
+      
+      ddf <- format_by_datetime(data)
+      
+      trips_in_day <- ddf %>% group_by(dy, mo, yr) %>% 
+        summarize(N = length(route))
+      
+      most_trips_in_day <- trips_in_day %>%
+        subset(N == max(N)) %>%
+        mutate(date = paste(mo, dy, yr, sep="/")) %>% 
+        as.data.frame
+      
+      incProgress(0.1, detail = "Downloading weather data")
+      
+      # weather
+      W <- get_weather_data(seq(
+        min(as.numeric(as.character(ddf$yr))), 
+        max(as.numeric(as.character(ddf$yr)))
+      ))
+      
+      incProgress(0.4, detail = "Analyzing weather")
+      
+      ddfw <- plyr::join(ddf, W)
+      ddfw$Date <- as.character(ddfw$Date)
+      coldest <- filter(ddfw, Max_TemperatureC == min(Max_TemperatureC))
+      coldest <- paste(
+        unique(coldest$Max_TemperatureC), "C",
+        paste0("(",
+               paste(coldest$Date, collapse=", "),
+               ")")
+      )
+      warmest <- filter(ddfw, Max_TemperatureC == max(Max_TemperatureC))
+      warmest <- paste(
+        unique(warmest$Max_TemperatureC), "C",
+        paste0("(",
+               paste(warmest$Date, collapse=", "),
+               ")")
+      )
+      
+      incProgress(0.1, "Putting it all together")
+      
+      info <- list(
+        data=data, 
+        stations=stations,
+        freq=freq,
+        most_start=freq[most_start, c("stationName", "N")],
+        most_end=freq[most_end, c("stationName", "N")],
+        avg_ride=avg_ride,
+        shortest_trip=paste(
+          data[shortest_trip, "Start.Station"], "to", 
+          data[shortest_trip, "End.Station"], ",", 
+          data[shortest_trip, "Duration"], "minutes"),
+        longest_trip=paste(
+          data[longest_trip, "Start.Station"], "to", 
+          data[longest_trip, "End.Station"], ",", 
+          data[longest_trip, "Duration"], "minutes"),
+        most_freq_trips=most_freq_trips,
+        trips_in_day=trips_in_day,
+        most_trips_in_day=paste(
+          unique(most_trips_in_day$N), 
+          paste0("(", 
+                 paste(most_trips_in_day$date, collapse=", "), 
+                 ")")
+        ),
+        coldest=coldest,
+        warmest=warmest,
+        ddfw=ddfw,
+        ddf=ddf)
+      setProgress(1)
+    })
     return(info)
   })  
   
@@ -102,8 +145,11 @@ shinyServer(function(input, output, session) {
     avg_rides <- paste("Average number of rides per day:", 
                        round(mean(Data()$trips_in_day$N), 2))
     most_trips_in_day <- paste("Most trips in one day:", Data()$most_trips_in_day)
+    coldest <- paste("Coldest trip(s):", Data()$coldest)
+    warmest <- paste("Warmest trip(s):", Data()$warmest)
     HTML(paste(tot, start, end, avg, shortest, longest, avg_rides, 
-               most_trips_in_day, sep = "<br/>")
+               most_trips_in_day, coldest, warmest, 
+               sep = "<br/>")
          )  
   })
 
