@@ -69,14 +69,25 @@ get_bike_share_data <- function(
 }
 
 # Data processing ####
-calculate_station_frequencies <- function(data, stations) {
-  # Calculate station frequencies given ride data 
+calculate_station_frequencies <- function(data, stations, start = NULL, 
+                                          end = NULL) {
+  # Calculate station frequencies given ride data.
+  # Can optionally filter by start and end date (format: YYYY-mm-dd)
   #
   # Return data frame of start and end stations, their frequencies, and 
   # coordinates
-  rbind(data.frame(stationName=data$Start.Station, type = "Start", 
+  df <- data
+  if (!is.null(start)) {
+    dates <- convert_date_time(df$Start.Date)
+    df <- df[which(dates >= start),]
+  }
+  if (!is.null(end)) {
+    dates <- convert_date_time(df$End.Date)
+    df <- df[which(dates <= end),]
+  }
+  rbind(data.frame(stationName=df$Start.Station, type = "Start", 
                    stringsAsFactors=FALSE), 
-        data.frame(stationName=data$End.Station, type = "End", 
+        data.frame(stationName=df$End.Station, type = "End", 
                    stringsAsFactors=FALSE)) %>%
     group_by(stationName, type) %>%
     summarize(N = length(stationName)) %>%
