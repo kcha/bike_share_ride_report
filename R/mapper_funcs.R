@@ -86,7 +86,7 @@ calculate_station_frequencies <- function(data, stations) {
 
 format_by_datetime <- function(data) {
   # Create a new data frame with different time formats
-  dates <- as.POSIXct(strptime(data$Start.Date, "%m/%d/%Y %I:%M %p"))
+  dates <- convert_date_time(data$Start.Date)
   ddf <- data.frame(
     mo = strftime(dates, "%m"),
     dy = strftime(dates, "%d"),
@@ -105,6 +105,11 @@ format_by_datetime <- function(data) {
   ddf$hr <- factor(ddf$hr, levels=sort(unique(ddf$hr)), ordered=T)
   ddf$min<- factor(ddf$min, levels=sort(unique(ddf$min)), ordered=T)
   return(ddf)
+}
+
+convert_date_time <- function(dates) {
+  # Helper function to convert date time to POSIX class
+  as.POSIXct(strptime(dates, "%m/%d/%Y %I:%M %p"))
 }
 
 # Misc functions ####
