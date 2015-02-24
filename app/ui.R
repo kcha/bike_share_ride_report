@@ -36,12 +36,19 @@ shinyUI(fluidPage(
                          ),
             numericInput("min_map_ride_freq", "Minimum:", 1, min = 1),
             numericInput("max_map_ride_freq", "Maximum:", 100, min = 1),
+            dateRangeInput("date_range_map", "Date range:", 
+                           start = "2010-01-01", end = "2015-12-31",
+                           max = format(Sys.time(), "%Y-%m-%d")),
             br(),
             actionButton("go_map_button", "Update"),
             p("Click 'Update' to refresh the map")
           ),
           conditionalPanel(
-            'input.dataset == "Charts"'
+            'input.dataset == "Charts"',
+            dateRangeInput("date_range_chart", "Date range:", 
+                           start = "2010-01-01", end = "2015-12-31",
+                           max = format(Sys.time(), "%Y-%m-%d"))
+            
           ),
           conditionalPanel(
             'input.dataset == "Ride Data"',
