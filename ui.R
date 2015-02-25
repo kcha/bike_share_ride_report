@@ -45,8 +45,15 @@ shinyUI(fluidPage(
             'input.dataset == "Charts"',
             dateRangeInput("date_range_chart", "Date range:", 
                            start = "2010-01-01", end = "2015-12-31",
-                           max = format(Sys.time(), "%Y-%m-%d"))
-            
+                           max = format(Sys.time(), "%Y-%m-%d")),
+            radioButtons(
+              "chart_type", "Select plot type:",
+              c("Number of trips by month" = "plot_by_month",
+                "Trip duration by day" = "plot_trip_by_day",
+                "Trip duration by month" = "plot_trip_by_month",
+                "Trip duration by most frequent routes" = "plot_trip_by_station")
+            ),
+            checkboxInput("show_weather", "Show weather data")
           ),
           conditionalPanel(
             'input.dataset == "Ride Data"',

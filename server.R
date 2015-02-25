@@ -1,4 +1,5 @@
 library(shiny)
+library(gridExtra)
 source("R/mapper_funcs.R")
 source("R/weather_funcs.R")
 
@@ -49,7 +50,7 @@ shinyServer(function(input, output, session) {
         mutate(date = paste(mo, dy, yr, sep="/")) %>% 
         as.data.frame
       
-      incProgress(0.1, detail = "Downloading weather data")
+      incProgress(0.1)
       
       # weather
       W <- get_weather_data(seq(
@@ -57,7 +58,7 @@ shinyServer(function(input, output, session) {
         max(as.numeric(as.character(ddf$yr)))
       ))
       
-      incProgress(0.4, detail = "Analyzing weather")
+      incProgress(0.4)
       
       ddfw <- plyr::join(ddf, W)
       ddfw$Date <- as.character(ddfw$Date)
@@ -76,7 +77,7 @@ shinyServer(function(input, output, session) {
                ")")
       )
       
-      incProgress(0.1, "Putting it all together")
+      incProgress(0.1)
       
       info <- list(
         data=data, 
@@ -103,6 +104,7 @@ shinyServer(function(input, output, session) {
         ),
         coldest=coldest,
         warmest=warmest,
+        weather=W,
         ddfw=ddfw,
         ddf=ddf)
       setProgress(1)
@@ -207,20 +209,61 @@ shinyServer(function(input, output, session) {
   # Render plots
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   output$charts <- renderPlot({
-    format_by_datetime(Data()$data, 
-                       format(input$date_range_chart[1]), 
-                       format(input$date_range_chart[2])) %>%
-    group_by(yr, mo, mo.abbr) %>% 
-      summarize(N = length(mo)) %>%
-      arrange(yr, mo) %>%
-      ggplot(aes(x = mo.abbr, 
-                 y = N, 
-                 fill = yr)) + 
-      geom_bar(stat = "identity", position="dodge") +
-      xlab("Month") + ylab("Number of trips") +
-      scale_fill_discrete("Year") +
-      ggtitle("Number of trips by month and year")
-  })
+    withProgress(message = "Loading", value = 0.1, {
+      df <- format_by_datetime(Data()$data, 
+                               format(input$date_range_chart[1]), 
+                               format(input$date_range_chart[2]))
+      validate(need(nrow(df) > 0, "Not matching results"))  
+      
+      if (input$chart_type == "plot_by_month") {
+        incProgress(0.7)
+        gp1 <- group_by(df, yr, mo, mo.abbr) %>% 
+          summarize(N = length(mo)) %>%
+          arrange(yr, mo) %>%
+          ggplot(aes(x = mo.abbr, 
+                     y = N, 
+                     fill = yr)) + 
+          geom_bar(stat = "identity", position="dodge") +
+          xlab("Month") + ylab("Number of trips") +
+          scale_fill_discrete("Year") +
+          ggtitle("Number of trips by month and year")
+
+      } else if (input$chart_type == "plot_trip_by_day") {
+        incProgress(0.5)
+        gp1 <- group_by(df, yr, mo, mo.abbr, dy) %>%
+          summarize(avg.duration = round(mean(duration), digits=2),
+                    sd = round(sd(duration), digits=2)) %>%
+          ggplot(aes(x = dy,
+                     y = avg.duration, color=yr, group=yr)) +
+          geom_point() +
+          geom_line() +
+          geom_errorbar(aes(ymin = avg.duration - sd, ymax = avg.duration + sd, 
+                            color = yr), 
+                        width = 0.2, position=position_dodge(width = 0.1)) +
+          facet_wrap(~ mo.abbr, ncol = 2, scale="free_x") +
+          theme(axis.text.x = element_text(angle= 45, hjust = 1, size=8)) +
+          xlab("Day") + ylab("Duration") +
+          ggtitle("Trip duration by day")
+        
+        
+      } else if (input$chart_type == "plot_trip_by_month") {
+        hist(rpois(100, 3))  
+      } else if (input$chart_type == "plot_trip_by_station") {
+        boxplot(rnorm(100))  
+      }
+      
+      setProgress(0.85)
+      
+      gp2 <- NULL
+      if (input$show_weather) {
+        gp2 <- plot_weather_by_month(Data()$weather)
+        grid.arrange(gp1, gp2)
+      } else {
+        print(gp1)
+      }
+      setProgress(1)
+    })
+  }, height = 900)
   
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Render data table
