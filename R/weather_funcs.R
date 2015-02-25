@@ -23,5 +23,6 @@ plot_weather_by_month <- function(W) {
     ggplot(aes(x = mo.abbr, y = temp, group = yr, color = yr)) +
     geom_point() + geom_line() +
     ylab("Average Temperature (C)") +
-    xlab("Month")
+    xlab("Month") +
+    ggtitle("Historical Weather")
 }
