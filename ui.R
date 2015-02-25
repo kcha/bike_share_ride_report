@@ -57,12 +57,8 @@ shinyUI(fluidPage(
           ),
           conditionalPanel(
             'input.dataset == "Ride Data"',
-            
-            sliderInput("years", "Select year range:",
-                        min = 2010, max = 2015,
-                        value = c(2010, 2015),
-                        round = TRUE)
-            
+            helpText("Data table showing the input data")
+                        
           )
         )
       ),
