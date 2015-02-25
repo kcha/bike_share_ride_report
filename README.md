@@ -18,6 +18,7 @@ for an example).
   * dplyr
   * stringr
   * assertthat
+  * shiny
 
 ## Usage
 
@@ -32,17 +33,14 @@ manually copy and paste all of your trip data to a text file. The format of the
 trip data should be exactly as it appears when viewing your data online. See
 [`sample_data/ride_data.txt`](https://github.com/kcha/bike_share_ride_report/blob/master/sample_data/ride_data.txt) for an example.
 
-### Generating ride report
+### Starting Shiny App
 
-1. After downloading your ride data, start RStudio and open the `bike_share_ride_report.Rproj`
-project file.
-2. Open the R Markdown file, `ride_report.Rmd`, and edit line `16` with the path
-of your ride data file:
+1. To start the app on your local machine, run the following command in RStudio
 ```r
-input_file <- "sample_data/ride_data.txt"
+# install.packages("shiny")
+shiny::runGitHub('bike_share_ride_report', 'kcha')
 ```
-3. Click *Knit HTML*
-4. An HTML file called `ride_report.html` should be generated.
+2. Upload your ride data to generate your personal ride report
 
 ## Disclaimer
 This is a personal project and not affiliated with Bike Share Toronto.

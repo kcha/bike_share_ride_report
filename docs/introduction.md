@@ -15,7 +15,7 @@ trip data should be exactly as it appears when viewing your data online. See
 ### Usage steps
 
 1. Upload your saved ride data file using the submission form on the left (titled `LOAD RIDE DATA`)
-1. The Shiny App will begin processing your file immediately
+1. The Shiny App will begin processing your file
 1. Use the tabs in the main panel to view the different charts and statistics
 
 ## Privacy
