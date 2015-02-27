@@ -118,6 +118,19 @@ shinyServer(function(input, output, session) {
                                   format(input$date_range_map[2]))
   })
   
+  RouteDurations <- reactive({
+    format_by_datetime(Data()$data, 
+                       format(input$date_range_chart[1]), 
+                       format(input$date_range_chart[2]))
+  })
+  
+  RouteFreqByMonth <- reactive({
+    RouteDurations() %>% group_by(yr, mo, mo.abbr, route) %>%
+      summarize(N = length(route),
+                avg.duration = round(mean(duration), digits=2),
+                sd = round(sd(duration), digits=2))
+  })
+  
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Update maximum ride frequency for maps
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -130,6 +143,12 @@ shinyServer(function(input, output, session) {
 
     updateDateRangeInput(session, "date_range_map", start = earliest, end = latest)
     updateDateRangeInput(session, "date_range_chart", start = earliest, end = latest)  
+    
+    # Update route selection
+    updateSelectInput(session, "routes", 
+                      choices = Data()$most_freq_trips$route,
+                      selected = Data()$most_freq_trips[1:6, "route"])
+                      
   })
   
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -210,9 +229,7 @@ shinyServer(function(input, output, session) {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   output$charts <- renderPlot({
     withProgress(message = "Loading", value = 0.1, {
-      df <- format_by_datetime(Data()$data, 
-                               format(input$date_range_chart[1]), 
-                               format(input$date_range_chart[2]))
+      df <- RouteDurations()
       validate(need(nrow(df) > 0, "Not matching results"))  
       
       if (input$chart_type == "plot_by_month") {
@@ -227,7 +244,6 @@ shinyServer(function(input, output, session) {
           xlab("Month") + ylab("Number of trips") +
           scale_fill_discrete("Year") +
           ggtitle("Number of trips by month and year")
-
       } else if (input$chart_type == "plot_trip_by_day") {
         incProgress(0.5)
         gp1 <- group_by(df, yr, mo, mo.abbr, dy) %>%
@@ -244,12 +260,34 @@ shinyServer(function(input, output, session) {
           theme(axis.text.x = element_text(angle= 45, hjust = 1, size=8)) +
           xlab("Day") + ylab("Duration") +
           ggtitle("Trip duration by day")
-        
-        
       } else if (input$chart_type == "plot_trip_by_month") {
-        hist(rpois(100, 3))  
+        gp1 <- df %>%
+          ggplot(aes(x = mo.abbr,
+                     y = duration, fill=yr)) +
+          geom_boxplot(position="dodge") +
+          xlab("Month") + ylab("Duration") +
+          ggtitle("Trip duration by month")
       } else if (input$chart_type == "plot_trip_by_station") {
-        boxplot(rnorm(100))  
+#         freq_routes <- df %>% group_by(yr, mo, mo.abbr, route) %>%
+#           summarize(N = length(route),
+#                     avg.duration = round(mean(duration), digits=2),
+#                     sd = round(sd(duration), digits=2)) %>%
+#           subset(route %in% most_freq_trips[1:6, "route"])
+        
+        freq_routes <- RouteFreqByMonth() %>%
+          subset(route %in% input$routes)
+        
+        gp1 <- freq_routes %>%
+          ggplot(aes(x = mo.abbr,
+                     y = avg.duration, group=yr)) +
+          geom_point(aes(color=yr)) +
+          geom_line(aes(color=yr)) +
+          geom_errorbar(aes(ymin = avg.duration - sd, ymax = avg.duration + sd, 
+                            color = yr), 
+                        width = 0.2, position=position_dodge(width = 0.1)) +
+          facet_wrap(~ route, ncol =2, scale="free_x") +
+          xlab("Month") + ylab("Average Duration") +
+          ggtitle("Trip duration by most frequent routes")
       }
       
       setProgress(0.85)

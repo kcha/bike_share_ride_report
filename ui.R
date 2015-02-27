@@ -81,7 +81,15 @@ shinyUI(fluidPage(
         tabPanel('Summary Statistics', htmlOutput('summary')),
         tabPanel('Most Popular Routes', dataTableOutput('popular')),
         tabPanel('Maps', plotOutput('maps')),
-        tabPanel('Charts', plotOutput('charts')),
+        tabPanel('Charts', 
+                 conditionalPanel(
+                   'input.chart_type == "plot_trip_by_station"',
+                   selectInput('routes', "Choose route(s):",
+                               width = "100%",
+                               multiple = TRUE,
+                               choices = "")
+                 ),
+                 plotOutput('charts')),
         tabPanel('Ride Data', dataTableOutput('ridedata')),
         tabPanel('Usage', includeMarkdown('docs/introduction.md'))
       )
