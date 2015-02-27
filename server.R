@@ -307,7 +307,7 @@ shinyServer(function(input, output, session) {
       }
       setProgress(1)
     })
-  }, height = 900)
+  })
   
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Render data table

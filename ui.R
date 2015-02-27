@@ -80,7 +80,7 @@ shinyUI(fluidPage(
         id = 'dataset',
         tabPanel('Summary Statistics', htmlOutput('summary')),
         tabPanel('Most Popular Routes', dataTableOutput('popular')),
-        tabPanel('Maps', plotOutput('maps')),
+        tabPanel('Maps', plotOutput('maps', height = "700px")),
         tabPanel('Charts', 
                  conditionalPanel(
                    'input.chart_type == "plot_trip_by_station"',
@@ -89,7 +89,7 @@ shinyUI(fluidPage(
                                multiple = TRUE,
                                choices = "")
                  ),
-                 plotOutput('charts')),
+                 plotOutput('charts', height = "700px")),
         tabPanel('Ride Data', dataTableOutput('ridedata')),
         tabPanel('Usage', includeMarkdown('docs/introduction.md')),
         type = "pills"
