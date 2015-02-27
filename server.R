@@ -144,7 +144,11 @@ shinyServer(function(input, output, session) {
   # Update maximum ride frequency for maps
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   observe({
-    updateNumericInput(session, "max_map_ride_freq", value = max(Data()$freq$N))  
+    group_by(Data()$freq, stationName) %>%
+      summarize(N = sum(N)) %>%
+      select(N) %>%
+      max %>%
+    updateNumericInput(session, "max_map_ride_freq", value = .)  
     
     # Get earliest and latest dates
     latest <- with(Data()$ddf, max(paste(yr, mo, dy, sep = "-")))
