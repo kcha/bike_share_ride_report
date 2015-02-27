@@ -53,11 +53,12 @@ shinyServer(function(input, output, session) {
       incProgress(0.1)
       
       # weather
-      W <- get_weather_data(seq(
-        min(as.numeric(as.character(ddf$yr))), 
-        max(as.numeric(as.character(ddf$yr)))
-      ))
-      
+#       W <- get_weather_data(seq(
+#         min(as.numeric(as.character(ddf$yr))), 
+#         max(as.numeric(as.character(ddf$yr)))
+#       ))
+      W <- readRDS("weather.rds")      
+
       incProgress(0.4)
       
       ddfw <- plyr::join(ddf, W)
@@ -131,6 +132,14 @@ shinyServer(function(input, output, session) {
                 sd = round(sd(duration), digits=2))
   })
   
+  Weather <- reactive({
+    w <- Data()$weather
+    dates <- as.POSIXct(strptime(w$Date, "%Y-%m-%d"))
+    w$Date <- as.character(w$Date)
+    filter(w, dates >= format(input$date_range_chart[1]),
+           dates <= format(input$date_range_chart[2]))
+  })
+
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Update maximum ride frequency for maps
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -232,8 +241,8 @@ shinyServer(function(input, output, session) {
       df <- RouteDurations()
       validate(need(nrow(df) > 0, "Not matching results"))  
       
+      incProgress(0.6)
       if (input$chart_type == "plot_by_month") {
-        incProgress(0.7)
         gp1 <- group_by(df, yr, mo, mo.abbr) %>% 
           summarize(N = length(mo)) %>%
           arrange(yr, mo) %>%
@@ -245,7 +254,6 @@ shinyServer(function(input, output, session) {
           scale_fill_discrete("Year") +
           ggtitle("Number of trips by month and year")
       } else if (input$chart_type == "plot_trip_by_day") {
-        incProgress(0.5)
         gp1 <- group_by(df, yr, mo, mo.abbr, dy) %>%
           summarize(avg.duration = round(mean(duration), digits=2),
                     sd = round(sd(duration), digits=2)) %>%
@@ -267,13 +275,7 @@ shinyServer(function(input, output, session) {
           geom_boxplot(position="dodge") +
           xlab("Month") + ylab("Duration") +
           ggtitle("Trip duration by month")
-      } else if (input$chart_type == "plot_trip_by_station") {
-#         freq_routes <- df %>% group_by(yr, mo, mo.abbr, route) %>%
-#           summarize(N = length(route),
-#                     avg.duration = round(mean(duration), digits=2),
-#                     sd = round(sd(duration), digits=2)) %>%
-#           subset(route %in% most_freq_trips[1:6, "route"])
-        
+      } else if (input$chart_type == "plot_trip_by_station") {        
         freq_routes <- RouteFreqByMonth() %>%
           subset(route %in% input$routes)
         
@@ -290,11 +292,11 @@ shinyServer(function(input, output, session) {
           ggtitle("Trip duration by most frequent routes")
       }
       
-      setProgress(0.85)
+      setProgress(0.9)
       
       gp2 <- NULL
       if (input$show_weather) {
-        gp2 <- plot_weather_by_month(Data()$weather)
+        gp2 <- plot_weather_by_month(Weather())
         grid.arrange(gp1, gp2)
       } else {
         print(gp1)
