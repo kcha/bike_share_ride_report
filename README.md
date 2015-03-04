@@ -4,7 +4,6 @@ A Shiny app takes your personal ride data from [Bike Share Toronto](https://www.
 and creates a collection of summary reports and charts of your ride usage.
 
 ## Requirements
- * RStudio (this project was developed using 0.98.1091)
  * R 3.1.1+ plus the following packages:
   * rjson
   * ggmap

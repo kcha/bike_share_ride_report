@@ -91,7 +91,7 @@ shinyUI(fluidPage(
                  ),
                  plotOutput('charts', height = "700px")),
         tabPanel('Ride Data', dataTableOutput('ridedata')),
-        tabPanel('Usage', includeMarkdown('docs/introduction.md')),
+        tabPanel('README', includeMarkdown('README.md')),
         type = "pills"
       )
     )
