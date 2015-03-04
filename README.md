@@ -13,6 +13,11 @@ and creates a collection of summary reports and charts of your ride usage.
   * shiny
   * weatherData
 
+Run the following command in your R console to install the above R packages:
+```r
+install.packages(c("assertthat", "ggmap", "dplyr", "rjson", "stringr", "shiny", "weatherData"))
+```
+
 ## Usage
 
 ### Station data
@@ -28,9 +33,9 @@ data online. See [`sample_data/ride_data.txt`](https://github.com/kcha/bike_shar
 
 ### Starting the Shiny app
 
+
 To start the app on your local machine, run the following command in your R console:
 ```r
-# install.packages("shiny")
 shiny::runGitHub('bike_share_ride_report', 'kcha')
 ```
 
