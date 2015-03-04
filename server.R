@@ -67,7 +67,7 @@ shinyServer(function(input, output, session) {
 
       incProgress(0.4, message = "Analyzing ride data")
       
-      ddfw <- plyr::join(ddf, W)
+      ddfw <- plyr::join(ddf, W, type = "inner")
       ddfw$Date <- as.character(ddfw$Date)
       coldest <- filter(ddfw, Max_TemperatureC == min(Max_TemperatureC))
       coldest <- paste(
