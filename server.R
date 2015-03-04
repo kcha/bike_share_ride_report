@@ -17,7 +17,7 @@ shinyServer(function(input, output, session) {
       data <- get_ride_data(input$file$datapath)  
     }  
     
-    withProgress(message = "Processing ride data", value = 0.1, {
+    withProgress(message = "Loading ride data", value = 0.1, {
       freq <- calculate_station_frequencies(data, stations)
       
       incProgress(0.1)
@@ -53,13 +53,19 @@ shinyServer(function(input, output, session) {
       incProgress(0.1)
       
       # weather
-#       W <- get_weather_data(seq(
-#         min(as.numeric(as.character(ddf$yr))), 
-#         max(as.numeric(as.character(ddf$yr)))
-#       ))
-      W <- readRDS("weather.rds")      
+      latest_date <- as.POSIXct(with(ddf, max(paste(yr, mo, dy, sep = "-"))))
+      if (latest_date - file.info("weather.rds")[,"mtime"] > 14) {
+        incProgress(0.1, message = "Downloading weather data")
+        W <- get_weather_data(seq(
+          min(as.numeric(as.character(ddf$yr))), 
+          max(as.numeric(as.character(ddf$yr)))
+        ))
+        saveRDS(W, "weather.rds")
+      } else {
+        W <- readRDS("weather.rds")  
+      }
 
-      incProgress(0.4)
+      incProgress(0.4, message = "Analyzing ride data")
       
       ddfw <- plyr::join(ddf, W)
       ddfw$Date <- as.character(ddfw$Date)
@@ -243,7 +249,7 @@ shinyServer(function(input, output, session) {
   output$charts <- renderPlot({
     withProgress(message = "Loading", value = 0.1, {
       df <- RouteDurations()
-      validate(need(nrow(df) > 0, "Not matching results"))  
+      validate(need(nrow(df) > 0, "No matching results"))  
       
       incProgress(0.6)
       if (input$chart_type == "plot_by_month") {
