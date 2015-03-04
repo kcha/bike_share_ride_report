@@ -5,12 +5,13 @@ and creates a collection of summary reports and charts of your ride usage.
 
 ## Requirements
  * R 3.1.1+ plus the following packages:
-  * rjson
+  * assertthat
   * ggmap
   * dplyr
+  * rjson
   * stringr
-  * assertthat
   * shiny
+  * weatherData
 
 ## Usage
 
