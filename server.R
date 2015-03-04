@@ -69,18 +69,18 @@ shinyServer(function(input, output, session) {
       
       ddfw <- plyr::join(ddf, W, type = "inner")
       ddfw$Date <- as.character(ddfw$Date)
-      coldest <- filter(ddfw, Max_TemperatureC == min(Max_TemperatureC))
+      coldest <- filter(ddfw, Mean_TemperatureC == min(Mean_TemperatureC))
       coldest <- paste(
         unique(coldest$Max_TemperatureC), "C",
         paste0("(",
-               paste(coldest$Date, collapse=", "),
+               paste(unique(coldest$Date), collapse=", "),
                ")")
       )
-      warmest <- filter(ddfw, Max_TemperatureC == max(Max_TemperatureC))
+      warmest <- filter(ddfw, Mean_TemperatureC == max(Mean_TemperatureC))
       warmest <- paste(
         unique(warmest$Max_TemperatureC), "C",
         paste0("(",
-               paste(warmest$Date, collapse=", "),
+               paste(unique(warmest$Date), collapse=", "),
                ")")
       )
       
