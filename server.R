@@ -300,6 +300,24 @@ shinyServer(function(input, output, session) {
           facet_wrap(~ route, ncol =2, scale="free_x") +
           xlab("Month") + ylab("Average Duration") +
           ggtitle("Trip duration by most frequent routes")
+      } else if (input$chart_type == "plot_time_of_day") {
+        
+        gp1 <- df %>% 
+          mutate(HR=as.numeric(as.character(hr)) + 
+                   as.numeric(as.character(min))/60) %>%
+          ggplot(aes(x = HR)) +
+          geom_histogram(binwidth = 0.25) +
+          xlab("Time (24 hr)") + ylab("Count") +
+          ggtitle("Trips by time of day") +
+          scale_x_continuous(breaks = seq(1,24,1))
+      } else if (input$chart_type == "plot_num_trips_by_day") {
+        gp1 <- df %>%
+          group_by(dy, mo, yr) %>% 
+          summarize(N = length(route)) %>%
+          ggplot(aes(x = N, fill = yr, group = yr)) +
+          geom_histogram(position="dodge", binwidth = 1) +
+          xlab("Trips per day") + ylab("Count") +
+          ggtitle("Number of trips per day")
       }
       
       setProgress(0.9)

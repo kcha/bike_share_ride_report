@@ -51,7 +51,9 @@ shinyUI(fluidPage(
               c("Number of trips by month" = "plot_by_month",
                 "Trip duration by day" = "plot_trip_by_day",
                 "Trip duration by month" = "plot_trip_by_month",
-                "Trip duration by most frequent routes" = "plot_trip_by_station")
+                "Trip duration by most frequent routes" = "plot_trip_by_station",
+                "Time of day" = "plot_time_of_day",
+                "Total trips per day" = "plot_num_trips_by_day")
             ),
             checkboxInput("show_weather", "Show weather data")
           ),
