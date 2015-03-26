@@ -301,12 +301,11 @@ shinyServer(function(input, output, session) {
           xlab("Month") + ylab("Average Duration") +
           ggtitle("Trip duration by most frequent routes")
       } else if (input$chart_type == "plot_time_of_day") {
-        
         gp1 <- df %>% 
           mutate(HR=as.numeric(as.character(hr)) + 
                    as.numeric(as.character(min))/60) %>%
-          ggplot(aes(x = HR)) +
-          geom_histogram(binwidth = 0.25) +
+          ggplot(aes(x = HR, group = yr, fill = yr)) +
+          geom_histogram(binwidth = 0.25, alpha = 0.8) +
           xlab("Time (24 hr)") + ylab("Count") +
           ggtitle("Trips by time of day") +
           scale_x_continuous(breaks = seq(1,24,1))
