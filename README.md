@@ -6,8 +6,9 @@ and creates a collection of summary reports and charts of your ride usage.
 ## Requirements
  * R 3.1.1+ plus the following packages:
   * assertthat
-  * ggmap
   * dplyr
+  * ggmap
+  * ggplot2
   * rjson
   * stringr
   * shiny
@@ -15,7 +16,7 @@ and creates a collection of summary reports and charts of your ride usage.
 
 Run the following command in your R console to install the above R packages:
 ```r
-install.packages(c("assertthat", "ggmap", "dplyr", "rjson", "stringr", "shiny", "weatherData"))
+install.packages(c("assertthat", "ggplto2", "ggmap", "dplyr", "rjson", "stringr", "shiny", "weatherData"))
 ```
 
 ## Usage
