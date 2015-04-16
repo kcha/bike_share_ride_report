@@ -305,8 +305,9 @@ shinyServer(function(input, output, session) {
           mutate(HR=as.numeric(as.character(hr)) + 
                    as.numeric(as.character(min))/60) %>%
           ggplot(aes(x = HR, group = yr, fill = yr)) +
-          geom_histogram(binwidth = 0.25, alpha = 0.8) +
+          geom_histogram(binwidth = 0.25) +
           xlab("Time (24 hr)") + ylab("Count") +
+          facet_wrap(~ yr, ncol=1) +
           ggtitle("Trips by time of day") +
           scale_x_continuous(breaks = seq(1,24,1))
       } else if (input$chart_type == "plot_num_trips_by_day") {
