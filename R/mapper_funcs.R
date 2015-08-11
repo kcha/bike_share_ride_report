@@ -40,7 +40,7 @@ duration_to_minutes <- function(dur) {
 get_ride_data <- function(ride_data) {
   write(paste("Reading ride data from", ride_data), stderr())
   data <- read.table(ride_data, header = TRUE, sep = "\t", 
-                     stringsAsFactors=FALSE)
+                     stringsAsFactors=FALSE, quote = "")
   data$Duration <- duration_to_minutes(data$Duration)
   data$Start.Station <- cleanse_station_names(data$Start.Station)
   data$End.Station <- cleanse_station_names(data$End.Station)
