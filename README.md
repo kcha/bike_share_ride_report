@@ -30,7 +30,7 @@ Bike station geolocation data is obtained from http://www.bikesharetoronto.com/s
 Currently, the only way to get ride data is to log into your Bike Share Toronto
 online account and manually copy and paste all of your trip data to a text file. 
 The format of the trip data should be exactly as it appears when viewing your 
-data online. See [`sample_data/ride_data.txt`](https://github.com/kcha/bike_share_ride_report/blob/master/sample_data/ride_data.txt) for an example.
+data online. See [`sample_data/ride_data.txt`](https://github.com/kcha/bike_share_ride_report/blob/master/sample_data/ride_data.txt) (fake data) for an example.
 
 ### Starting the Shiny app
 
