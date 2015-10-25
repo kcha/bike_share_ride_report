@@ -12,7 +12,7 @@ shinyServer(function(input, output, session) {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   Data <- reactive({
     if (is.null(input$file)) {
-      data <- get_ride_data("sample_data/ride_data.txt")
+      data <- get_ride_data("https://raw.githubusercontent.com/kcha/bike_share_ride_report/master/sample_data/ride_data.txt")
     } else {
       data <- get_ride_data(input$file$datapath)  
     }  
