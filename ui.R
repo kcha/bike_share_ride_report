@@ -74,7 +74,7 @@ shinyUI(fluidPage(
         helpText(HTML("<b>ABOUT ME</b>")),
         HTML('Kevin Ha'),
         HTML('<br/>'),
-        HTML('<a href="http://individual.utoronto.ca/hakevin" target="_blank">http://individual.utoronto.ca/hakevin</a>')
+        HTML('<a href="http://kevinha.ca" target="_blank">http://kevinha.ca</a>')
       )
     ),
     mainPanel(
