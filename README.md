@@ -3,6 +3,8 @@
 A Shiny app takes your personal ride data from [Bike Share Toronto](https://www.bikesharetoronto.com/) 
 and creates a collection of summary reports and charts of your ride usage.
 
+![screenshot](screenshot.png)
+
 ## Requirements
  * R 3.1.1+ plus the following packages:
   * assertthat
@@ -16,14 +18,14 @@ and creates a collection of summary reports and charts of your ride usage.
 
 Run the following command in your R console to install the above R packages:
 ```r
-install.packages(c("assertthat", "ggplto2", "ggmap", "dplyr", "rjson", "stringr", "shiny", "weatherData"))
+install.packages(c("assertthat", "ggplot2", "ggmap", "dplyr", "rjson", "stringr", "shiny", "weatherData"))
 ```
 
 ## Usage
 
 ### Station data
 
-Bike station geolocation data is obtained from http://www.bikesharetoronto.com/stations/json
+Bike station geolocation data is obtained from https://tor.publicbikesystem.net/ube/stations
 
 ### Getting ride data
 

@@ -48,7 +48,7 @@ get_ride_data <- function(ride_data) {
 }
 
 get_bike_share_data <- function(
-  json_url = "http://www.bikesharetoronto.com/stations/json") {
+  json_url = "https://tor.publicbikesystem.net/ube/stations") {
   # Download Bike Share Toronto station data
   write(paste("Downloading bike share stations from", json_url), stderr())
   stations <- fromJSON(file=json_url, method='C')
@@ -56,7 +56,9 @@ get_bike_share_data <- function(
                          stringsAsFactors=FALSE)
   for (j in 1:ncol(stations)) {
     if (is.list(stations[,j])) {
-      z <- unlist(stations[,j])
+      z <- stations[,j]
+      z[unlist(lapply(z, is.null))] <- NA
+      z <- unlist(z)
       if (is.null(z)) {
         stations[,j] <- rep("NULL", nrow(stations))
       } else {
