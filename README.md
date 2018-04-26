@@ -3,6 +3,8 @@
 A Shiny app takes your personal ride data from [Bike Share Toronto](https://www.bikesharetoronto.com/) 
 and creates a collection of summary reports and charts of your ride usage.
 
+A demo is available here: https://kcha.shinyapps.io/bike_share_ride_report/
+
 ![screenshot](screenshot.png)
 
 ## Requirements
@@ -37,7 +39,6 @@ data online (including the headers).
 See [`sample_data/ride_data.txt`](https://github.com/kcha/bike_share_ride_report/blob/master/sample_data/ride_data.txt) (fake data) for an example.
 
 ### Starting the Shiny app
-
 
 To start the app on your local machine, run the following command in your R console:
 ```r
