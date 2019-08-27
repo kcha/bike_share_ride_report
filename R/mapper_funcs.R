@@ -27,13 +27,17 @@ trim <- function(x) {
 }
 
 duration_to_minutes <- function(dur) {
-  # Convert 0:00:00 time format to minutes
-  t <- str_split(dur, ":")
-  t <- lapply(t, as.numeric)
-  t <- do.call("rbind", t)
-  t <- as.matrix(t)
-  minutes <- 60*t[,1] + t[,2] + t[,3]/60
-  return(round(minutes, digits=2))
+  # Convert "XXm YYs" time format to minutes
+  t <- str_split(dur, " ")
+  
+  duration_in_minutes <- sapply(t, function(x) {
+    minutes <- as.numeric(str_extract(x[1], "\\d+"))
+    seconds <- as.numeric(str_extract(x[2], "\\d+"))
+    dur <- minutes + seconds/60
+    return(round(dur, digits=2))
+  })
+  return(duration_in_minutes)
+  
 }
 
 # Data I/O functions ####
@@ -80,11 +84,11 @@ calculate_station_frequencies <- function(data, stations, start = NULL,
   # coordinates
   df <- data
   if (!is.null(start)) {
-    dates <- convert_date_time(df$Start.Date)
+    dates <- convert_date_time(df$Start.Time)
     df <- df[which(dates >= start),]
   }
   if (!is.null(end)) {
-    dates <- convert_date_time(df$End.Date)
+    dates <- convert_date_time(df$End.Time)
     df <- df[which(dates <= end),]
   }
   rbind(data.frame(stationName=df$Start.Station, type = "Start", 
@@ -99,7 +103,7 @@ calculate_station_frequencies <- function(data, stations, start = NULL,
 
 format_by_datetime <- function(data, start = NULL, end = NULL) {
   # Create a new data frame with different time formats
-  dates <- convert_date_time(data$Start.Date)
+  dates <- convert_date_time(data$Start.Time)
   ddf <- data.frame(
     mo = strftime(dates, "%m"),
     dy = strftime(dates, "%d"),
@@ -132,7 +136,7 @@ format_by_datetime <- function(data, start = NULL, end = NULL) {
 
 convert_date_time <- function(dates) {
   # Helper function to convert date time to POSIX class
-  as.POSIXct(strptime(dates, "%m/%d/%Y %I:%M %p"))
+  as.POSIXct(strptime(dates, "%Y-%m-%d %H:%M"))
 }
 
 # Misc functions ####
