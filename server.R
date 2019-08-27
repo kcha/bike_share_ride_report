@@ -1,7 +1,6 @@
 library(shiny)
 library(gridExtra)
 source("R/mapper_funcs.R")
-source("R/weather_funcs.R")
 
 shinyServer(function(input, output, session) {
   
@@ -50,41 +49,7 @@ shinyServer(function(input, output, session) {
         mutate(date = paste(mo, dy, yr, sep="/")) %>% 
         as.data.frame
       
-      incProgress(0.1)
-      
-      # weather
-      latest_date <- as.POSIXct(with(ddf, max(paste(yr, mo, dy, sep = "-"))))
-      if (latest_date - file.info("weather.rds")[,"mtime"] > 14) {
-        incProgress(0.1, message = "Downloading weather data")
-        W <- get_weather_data(seq(
-          min(as.numeric(as.character(ddf$yr))), 
-          max(as.numeric(as.character(ddf$yr)))
-        ))
-        saveRDS(W, "weather.rds")
-      } else {
-        W <- readRDS("weather.rds")  
-      }
-
-      incProgress(0.4, message = "Analyzing ride data")
-      
-      ddfw <- plyr::join(ddf, W, type = "inner")
-      ddfw$Date <- as.character(ddfw$Date)
-      coldest <- filter(ddfw, Mean_TemperatureC == min(Mean_TemperatureC))
-      coldest <- paste(
-        unique(coldest$Max_TemperatureC), "C",
-        paste0("(",
-               paste(unique(coldest$Date), collapse=", "),
-               ")")
-      )
-      warmest <- filter(ddfw, Mean_TemperatureC == max(Mean_TemperatureC))
-      warmest <- paste(
-        unique(warmest$Max_TemperatureC), "C",
-        paste0("(",
-               paste(unique(warmest$Date), collapse=", "),
-               ")")
-      )
-      
-      incProgress(0.1)
+      incProgress(0.6, message = "Analyzing ride data")
       
       info <- list(
         data=data, 
@@ -109,10 +74,6 @@ shinyServer(function(input, output, session) {
                  paste(most_trips_in_day$date, collapse=", "), 
                  ")")
         ),
-        coldest=coldest,
-        warmest=warmest,
-        weather=W,
-        ddfw=ddfw,
         ddf=ddf)
       setProgress(1)
     })
@@ -138,14 +99,6 @@ shinyServer(function(input, output, session) {
                 sd = round(sd(duration), digits=2))
   })
   
-  Weather <- reactive({
-    w <- Data()$weather
-    dates <- as.POSIXct(strptime(w$Date, "%Y-%m-%d"))
-    w$Date <- as.character(w$Date)
-    filter(w, dates >= format(input$date_range_chart[1]),
-           dates <= format(input$date_range_chart[2]))
-  })
-
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Update maximum ride frequency for maps
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -185,10 +138,8 @@ shinyServer(function(input, output, session) {
     avg_rides <- paste("Average number of rides per day:", 
                        round(mean(Data()$trips_in_day$N), 2))
     most_trips_in_day <- paste("Most trips in one day:", Data()$most_trips_in_day)
-    coldest <- paste("Coldest trip(s):", Data()$coldest)
-    warmest <- paste("Warmest trip(s):", Data()$warmest)
     HTML(paste(tot, start, end, avg, shortest, longest, avg_rides, 
-               most_trips_in_day, coldest, warmest, 
+               most_trips_in_day,
                sep = "<br/>")
          )  
   })
@@ -322,13 +273,8 @@ shinyServer(function(input, output, session) {
       
       setProgress(0.9)
       
-      gp2 <- NULL
-      if (input$show_weather) {
-        gp2 <- plot_weather_by_month(Weather())
-        grid.arrange(gp1, gp2)
-      } else {
-        print(gp1)
-      }
+      print(gp1)
+      
       setProgress(1)
     })
   })

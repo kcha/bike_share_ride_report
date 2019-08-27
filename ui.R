@@ -54,8 +54,7 @@ shinyUI(fluidPage(
                 "Trip duration by most frequent routes" = "plot_trip_by_station",
                 "Time of day" = "plot_time_of_day",
                 "Total trips per day" = "plot_num_trips_by_day")
-            ),
-            checkboxInput("show_weather", "Show weather data")
+            )
           ),
           conditionalPanel(
             'input.dataset == "Ride Data"',
