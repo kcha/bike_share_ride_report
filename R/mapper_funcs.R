@@ -71,6 +71,8 @@ get_bike_share_data <- function(
     }
   } 
   stations$stationName <- cleanse_station_names(stations$stationName)
+  # Remove de-registered stations
+  stations <- stations[stations$statusValue == "In Service",]
   return(stations)
 }
 
