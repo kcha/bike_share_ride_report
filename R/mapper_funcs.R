@@ -156,7 +156,7 @@ generate_random_dates <- function(ndates, start = "2013/01/01 12:00 AM",
 }
 
 # Plotting functions ####
-calculate_bbox <- function(lon, lat, offset = 0.1) {
+calculate_bbox <- function(lon, lat, offset = 0.005) {
   # Calcualte bounding box for get_map() given a set of longitudes and 
   # corresponding latitudes
   #
@@ -167,8 +167,7 @@ calculate_bbox <- function(lon, lat, offset = 0.1) {
 }
 
 map_stations <- function(df) {
-  city <- get_map(calculate_bbox(df$longitude, df$latitude), zoom=14, 
-                  maptype = "roadmap", scale = 2)
+  city <- get_map(calculate_bbox(df$longitude, df$latitude))
   
   gp1 <- ggmap(city, extent = 'device') + 
     geom_point(aes(x = longitude, y = latitude, colour = N, size = N), 
