@@ -16,11 +16,10 @@ A demo is available here: https://kcha.shinyapps.io/bike_share_ride_report/
   * rjson
   * stringr
   * shiny
-  * weatherData
 
 Run the following command in your R console to install the above R packages:
 ```r
-install.packages(c("assertthat", "ggplot2", "ggmap", "dplyr", "rjson", "stringr", "shiny", "weatherData"))
+install.packages(c("assertthat", "ggplot2", "ggmap", "dplyr", "rjson", "stringr", "shiny"))
 ```
 
 ## Usage
