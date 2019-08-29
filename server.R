@@ -1,5 +1,5 @@
 library(shiny)
-library(gridExtra)
+library(tidyr)
 source("R/mapper_funcs.R")
 
 shinyServer(function(input, output, session) {
@@ -200,22 +200,40 @@ shinyServer(function(input, output, session) {
   output$charts <- renderPlot({
     withProgress(message = "Loading", value = 0.1, {
       df <- RouteDurations()
+      
+      # Get all month and combinations, even if there's no data for it
+      grid <- df %>% expand(mo = full_seq(as.numeric(as.character(mo)), 1),
+                            yr = full_seq(as.numeric(as.character(yr)), 1)) %>% 
+        mutate(mo.abbr = month.abb[mo])
+      
+      df <- mutate(df, mo = as.numeric(as.character(mo)),
+                            yr = as.numeric(as.character(yr))) %>% 
+        left_join(grid, .) %>% 
+        mutate(
+          mo = factor(mo, levels=sort(unique(mo)), ordered=TRUE),
+          yr = factor(yr, levels=sort(unique(yr)), ordered=TRUE),
+          mo.abbr = factor(mo.abbr, levels=unique(mo.abbr[order(mo)]), ordered=TRUE)
+        )
+      
       validate(need(nrow(df) > 0, "No matching results"))  
       
       incProgress(0.6)
       if (input$chart_type == "plot_by_month") {
-        gp1 <- group_by(df, yr, mo, mo.abbr) %>% 
-          summarize(N = length(mo)) %>%
+        gp1 <- df %>% 
+          group_by(yr, mo, mo.abbr) %>% 
+          summarize(N = length(which(!is.na(duration)))) %>%
           arrange(yr, mo) %>%
-          ggplot(aes(x = mo.abbr, 
+          ggplot(aes(x = yr, 
                      y = N, 
                      fill = yr)) + 
           geom_bar(stat = "identity", position="dodge") +
           xlab("Month") + ylab("Number of trips") +
-          scale_fill_discrete("Year") +
+          facet_wrap(~ mo.abbr, ncol = 2) +
+          # scale_fill_brewer("Year", palette="RdYlBu") +
           ggtitle("Number of trips by month and year")
       } else if (input$chart_type == "plot_trip_by_day") {
-        gp1 <- group_by(df, yr, mo, mo.abbr, dy) %>%
+        gp1 <- drop_na(df) %>% 
+          group_by(yr, mo, mo.abbr, dy) %>%
           summarize(avg.duration = round(mean(duration), digits=2),
                     sd = round(sd(duration), digits=2)) %>%
           ggplot(aes(x = dy,
@@ -225,16 +243,19 @@ shinyServer(function(input, output, session) {
           geom_errorbar(aes(ymin = avg.duration - sd, ymax = avg.duration + sd, 
                             color = yr), 
                         width = 0.2, position=position_dodge(width = 0.1)) +
-          facet_wrap(~ mo.abbr, ncol = 2, scale="free_x") +
+          facet_wrap(~ mo.abbr, ncol = 2) +
+          # scale_color_brewer("Year", palette="RdYlBu") +
           theme(axis.text.x = element_text(angle= 45, hjust = 1, size=8)) +
           xlab("Day") + ylab("Duration") +
           ggtitle("Trip duration by day")
       } else if (input$chart_type == "plot_trip_by_month") {
         gp1 <- df %>%
-          ggplot(aes(x = mo.abbr,
+          ggplot(aes(x = yr,
                      y = duration, fill=yr)) +
           geom_boxplot(position="dodge") +
           xlab("Month") + ylab("Duration") +
+          facet_wrap(~ mo.abbr, ncol = 2) +
+          # scale_fill_brewer("Year", palette="RdYlBu") +
           ggtitle("Trip duration by month")
       } else if (input$chart_type == "plot_trip_by_station") {        
         freq_routes <- RouteFreqByMonth() %>%
@@ -248,7 +269,8 @@ shinyServer(function(input, output, session) {
           geom_errorbar(aes(ymin = avg.duration - sd, ymax = avg.duration + sd, 
                             color = yr), 
                         width = 0.2, position=position_dodge(width = 0.1)) +
-          facet_wrap(~ route, ncol =2, scale="free_x") +
+          facet_wrap(~ route, ncol =2) +
+          # scale_fill_brewer("Year", palette="RdYlBu") +
           xlab("Month") + ylab("Average Duration") +
           ggtitle("Trip duration by most frequent routes")
       } else if (input$chart_type == "plot_time_of_day") {
@@ -256,6 +278,9 @@ shinyServer(function(input, output, session) {
           mutate(HR=as.numeric(as.character(hr)) + 
                    as.numeric(as.character(min))/60) %>%
           ggplot(aes(x = HR, group = yr, fill = yr)) +
+          # geom_density_ridges(    jittered_points = TRUE,
+          #                         position = position_points_jitter(width = 0.05, height = 0),
+          #                         point_shape = '|', point_size = 3, point_alpha = 1, alpha = 0.7) + 
           geom_histogram(binwidth = 0.25) +
           xlab("Time (24 hr)") + ylab("Count") +
           facet_wrap(~ yr, ncol=1) +
