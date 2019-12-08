@@ -1,8 +1,7 @@
-library(stringr)
+library(tidyverse)
 library(rjson)
 library(assertthat)
 library(ggmap)
-library(dplyr)
 
 # Data pre-processing functions ####
 cleanse_station_names <- function(stations) {
